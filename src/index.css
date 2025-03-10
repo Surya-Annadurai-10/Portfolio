@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+
+@font-face {
+  font-family: 'Lokicola';
+  src: url('../src/fonts/LOKICOLA.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.loki {
+  font-size: 4rem;
+  font-family: Lokicola;
+}
+
