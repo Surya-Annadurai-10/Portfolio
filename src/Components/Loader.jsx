@@ -29,7 +29,8 @@ const Loader = () => {
         let wordArr = gsap.utils.toArray(".word");
        let wordTl = gsap.timeline();
        wordArr.forEach((ele,index) =>{
-
+      //  console.log("ele" , ele);
+       
         if(index != 2){
             wordTl.from(ele , {
                 opacity : 0,
@@ -58,6 +59,8 @@ const Loader = () => {
              delay : 1,
                 ease: "power3.out"
             },"-=0.5")
+
+       
         }
        
        })
@@ -66,10 +69,16 @@ const Loader = () => {
        
            yPercent : -100,
            duration : 1,
+    
            ease : "power3.out"
        },"-=1")
         
-     
+       wordTl.to(overlayRef.current , {
+        yPercent : -100,
+        duration : 1,
+        delay : 0.4,
+        ease :"power3.out"
+      },"<")
      
       });
 
@@ -80,7 +89,7 @@ const Loader = () => {
 
   return (
     <>
-      <div>
+      <div className=" relative overflow-hidden">
       <div
         ref={loaderConRef}
         className="bg-black w-full loader relative overflow-hidden h-screen flex items-start justify-center"
@@ -97,9 +106,9 @@ const Loader = () => {
             <h1 className="font-['Lokicola'] tracking-wider left-[50%] top-[50%] translate-[-50%] text-[#ff0000c0] drop-shadow-2xl  word absolute text-6xl">Consistency<sup>!</sup></h1>
           </div>
 
-          <div ref={overlayRef} className="w-full overlay top-[100%] h-screen rounded-tl-[50%]  rounded-tr-[50%] bg-[rgba(255,255,255)] absolute"> </div>
         </div>
       </div>
+          <div ref={overlayRef} className="w-full absolute overlay top-[100%] h-screen bg-[#000000] absolute"> </div>
       </div>
     </>
   );
