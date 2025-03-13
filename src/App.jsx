@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import "./App.css";
 import Loader from "./Components/Loader";
 import Hero from "./Components/Hero";
@@ -9,7 +9,16 @@ import Projects from "./Containers/Projects";
 import Home from "./Containers/Home";
 import Layout from "./Containers/Layout";
 import Contact from "./Containers/Contact";
+import LocomotiveScroll from 'locomotive-scroll';
 
+const locomotiveScroll = new LocomotiveScroll({
+  el: document.querySelector("[data-scroll-container"),
+  smooth : true,
+  lerp : 0.01
+});
+
+
+export const DataContext = createContext();
 const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -35,6 +44,7 @@ function App() {
   const [showHero, setShowHero] = useState(false);
   const cursorRef = useRef(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [blur , setBlur] = useState(false)
 
   // console.log(coordinates);
 
@@ -81,7 +91,7 @@ function App() {
     let timeOut = setTimeout(() => {
       setShowHero(true);
       setShowCursor(true);
-    }, 8600);
+    }, 8200);
 
     const updateCoords = (e) => {
       // let rect = cursorRef.current.getBoundingClientRect();
@@ -118,6 +128,7 @@ function App() {
             scale : () => (cursorArr.length - i) / (cursorArr.length + (cursorArr.length) / 2) ,
              backgroundColor : colors[i] ,
             duration: 0.008,
+            // duration : 0.008,
             ease : "power3.out"
           });
         })
@@ -128,99 +139,6 @@ function App() {
     },
     { scope: null, dependencies: [showCursor, coords] }
   );
-
-  // useEffect(() => {
-
-  // gsap.to( cursorRef.current , {
-  //   left : coords.x - 12,
-  //   top : coords.y - 12
-  // })
-
-  //   return () => {
-  //     window.removeEventListener("mousemove", updateCoords);
-  //   };
-  // }, [showCursor]);
-
-  // useEffect(() =>{
-  //   let cursorArr = document.querySelectorAll(".cursor")
-
-  //   cursorArr.forEach((ele , i) =>{
-  //     ele.x = 0,
-  //     ele.y = 0,
-  //     ele.style.backgroundColor = colors[i % colors.length]
-  //   })
-
-  //   function animateCircles() {
-
-  //     let x = coordinates.x;
-  //     let y = coordinates.y;
-
-  //     cursorArr.forEach(function (circle, index) {
-  //       circle.style.left = x - 12 + "px";
-  //       circle.style.top = y - 12 + "px";
-
-  //       circle.style.scale = (cursorArr.length - index) / cursorArr.length;
-
-  //       circle.x = x;
-  //       circle.y = y;
-
-  //       const nextCircle = cursorArr[index + 1] || cursorArr[0];
-  //       x += (nextCircle.x - x) * 0.3;
-  //       y += (nextCircle.y - y) * 0.3;
-  //     });
-
-  //     requestAnimationFrame(animateCircles);
-  //   }
-
-  //   animateCircles();
-  // },[coordinates])
-
-  // useEffect(() =>{
-  //   const mouseMove = (dets) => {
-  //     setCoordinates({
-  //       x : dets.clientX,
-  //       y : dets.clientY
-  //     })
-  //     // let ctx = gsap.context(() => {
-  //     //   let cursorArr = gsap.utils.toArray(".cursor");
-  //     //   cursorArr.forEach((ele , i) =>{
-  //     //     const nextCircle = cursorArr[i + 1] || cursorArr[0]
-  //     //     // console.log(ele)
-  //     //     gsap.to(ele , {
-  //     //      left :coordinates.x -12,
-  //     //       top :coordinates.y -12,
-  //     //       backgroundColor : colors[i % colors.length],
-  //     //       scale : () => (cursorArr.length - i) / cursorArr.length,
-  //     //       x :coordinates.x ,
-  //     //       y :coordinates.y
-
-  //     //     })
-
-  //     //     gsap.to(nextCircle , () =>{
-  //     //       setCoordinates({
-  //     //         x : () => {
-  //     //            return coordinates.x += (nextCircle.x - coordinates.x) * 0.3
-
-  //     //         },
-  //     //         y : () => {
-  //     //           return coordinates.y += (nextCircle.y - coordinates.y) * 0.3
-
-  //     //        },
-
-  //     //       })
-  //     //     })
-  //     //   })
-
-  //     // });
-  //     // return () => ctx.revert();
-  //   }
-
-  //    if(showCursor){
-  //     window.addEventListener("mousemove",mouseMove );
-  //    }
-
-  //    return () => window.removeEventListener("mousemove" , mouseMove)
-  // },[showCursor])
 
   return (
     <>
@@ -261,7 +179,9 @@ function App() {
       ) : null}
       {showHero ? (
         <>
+        <DataContext.Provider value={{coords,setBlur,blur , setCoords ,showCursor , setShowCursor}} >
           <RouterProvider router={router} />
+        </DataContext.Provider>
         </>
       ) : (
         <Loader />

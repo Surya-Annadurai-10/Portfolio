@@ -68,14 +68,14 @@ const Loader = () => {
        wordTl.to(".loader" ,{
        
            yPercent : -100,
-           duration : 1,
+           duration : 0.4,
     
            ease : "power3.out"
        },"-=1")
         
        wordTl.to(overlayRef.current , {
         yPercent : -100,
-        duration : 1,
+        duration : 0.4,
         delay : 0.4,
         ease :"power3.out"
       },"<")
