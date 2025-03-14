@@ -5,7 +5,7 @@ import Footer from "../Components/Footer";
 
 const Layout = () => {
   return (
-    <div data-scroll-container className="w-full min-h-screen  bg-black text-white">
+    <div data-scroll-container className="w-full min-h-screen  bg-[#0E100F] text-white ">
       <Header />
       <Outlet />
       <Footer />

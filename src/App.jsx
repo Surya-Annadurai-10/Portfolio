@@ -41,7 +41,9 @@ const router = createBrowserRouter([
 
 function App() {
   const [showCursor, setShowCursor] = useState(false);
-  const [showHero, setShowHero] = useState(false);
+  const [showCursor2, setShowCursor2] = useState(false);
+
+  const [showHero, setShowHero] = useState(true);
   const cursorRef = useRef(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [blur , setBlur] = useState(false)
@@ -52,14 +54,30 @@ function App() {
 
   const colors = [
     "#ffb56b",
+    "#ffb56b",
     "#fdaf69",
+    "#fdaf69",
+
     "#f89d63",
+    "#f89d63",
+
+    "#f59761",
     "#f59761",
     "#ef865e",
+    "#ef865e",
+
     "#ec805d",
+    "#ec805d",
+
     "#e36e5c",
+    "#e36e5c",
+
     "#df685c",
+    "#df685c",
+
     "#d5585c",
+    "#d5585c",
+
     "#d1525c",
     "#c5415d",
     "#c03b5d",
@@ -87,17 +105,58 @@ function App() {
   
   ];
 
+  // const colors =[
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // "#fff",
+  // ]
+
   useEffect(() => {
     let timeOut = setTimeout(() => {
       setShowHero(true);
       setShowCursor(true);
+      // setShowCursor2(true);
     }, 8200);
 
     const updateCoords = (e) => {
-      // let rect = cursorRef.current.getBoundingClientRect();
-      // console.log(rect);
-      // let offSetX = rect.width / 2;
-      // let offSetY = rect.height / 2;
 
       setCoords({
         x: e.clientX,
@@ -125,12 +184,40 @@ function App() {
           tl.to(ele, {
             left: coords.x +1 ,
             top: coords.y +3,
-            scale : () => (cursorArr.length - i) / (cursorArr.length + (cursorArr.length) / 2) ,
+            scale : () => (cursorArr.length - i) / (cursorArr.length + (cursorArr.length) / 8) ,
              backgroundColor : colors[i] ,
             duration: 0.008,
             // duration : 0.008,
             ease : "power3.out"
           });
+        })
+        });
+
+        return () => ctx.revert();
+      }
+
+      if (showCursor2) {
+        let ctx = gsap.context(() => {
+          // let cursorArr = gsap.utils.toArray(".cursor2")
+          let tl = gsap.timeline();
+        // cursorArr.forEach((ele , i) =>{
+          
+        //   tl.to(ele, {
+        //     left: coords.x +1 ,
+        //     top: coords.y +3,
+        //     scale : () => (cursorArr.length - i) / (cursorArr.length + (cursorArr.length) / 8) ,
+        //      backgroundColor : colors[i] ,
+        //     duration: 0.008,
+        //     // duration : 0.008,
+        //     ease : "power3.out"
+        //   });
+        // })
+
+        gsap.to(".cursor2" , {
+          left: coords.x +1 ,
+          top: coords.y +3,
+          duration: 0.8,
+          ease : "power3.out"
         })
         });
 
@@ -174,12 +261,28 @@ function App() {
           <div className="circle"></div>
           <div className="circle"></div>
           <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
          
         </>
       ) : null}
+
+      {
+        showCursor2 ?(
+          <div className="cursor2"></div>
+        ) : null
+      }
       {showHero ? (
         <>
-        <DataContext.Provider value={{coords,setBlur,blur , setCoords ,showCursor , setShowCursor}} >
+        <DataContext.Provider value={{coords,setShowCursor2,showCursor2,setBlur,blur , setCoords ,showCursor , setShowCursor}} >
           <RouterProvider router={router} />
         </DataContext.Provider>
         </>

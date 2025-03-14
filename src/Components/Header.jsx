@@ -14,8 +14,24 @@ const Header = () => {
   let projectRef = useRef(null);
   let contactRef = useRef(null);
   let resumeRef = useRef(null);
+  let headContainerRef = useRef(null)
   const ctx = useContext(DataContext);
   // console.log(ctx);
+
+
+  useGSAP(() =>{
+    let ctx = gsap.context(() =>{
+       gsap.from("#link",{
+         x:100,
+        duration:2.5,
+        opacity : 0,
+        stagger : 0.2,
+        ease:"back.inOut"
+       })
+    })
+
+    return () => ctx.revert();
+  },{scope:headContainerRef})
 
   const handleMouseEnter = (ele) => {
     console.log("ele", ele);
@@ -29,40 +45,42 @@ const Header = () => {
     // })
   };
 
-  const handleMouseLeave = (ele, value) => {
-    ctx.setShowCursor(true);
-    gsap.to(ele, {
-      left: value,
-      top: 0,
-      ease: "cubic-bezier(0.19,1,0.22,1)",
-      duration: 1,
-    });
-  };
+  // const handleMouseLeave = (ele, value) => {
+  //   ctx.setShowCursor(true);
+  //   gsap.to(ele, {
+  //     left: value,
+  //     top: 0,
+  //     ease: "cubic-bezier(0.19,1,0.22,1)",
+  //     duration: 1,
+  //   });
+  // };
 
   return (
-    <div className={`w-full fixed z-[5] ${!ctx.blur ? "backdrop-blur-md" : null }  h-[11vh] flex items-center justify-between px-[2rem]`}>
-      <Link to={""}>
+    <div ref={headContainerRef} className={`w-full overflow-hidden fixed z-[5] ${!ctx.blur ? "backdrop-blur-md" : null }  h-[11vh] flex items-center justify-between px-[2rem]`}>
+      <Link  to={""}>
       <div className="w-[80px] relative active:scale-[0.8] transition-all">
         <img className="w-full rounded-2xl inline-block" src={logo} alt="" />
       </div>
       </Link>
-      <div className=' flex  relative font-["Mulish","Helvetica Neue",sans-serif] items-center justify-between gap-10'>
-        <Link to={"/projects"}>
-          <div className="flex gap-1 hover:bg-[#ff000058] bg-black transition-all active:scale-[0.6]  duration-500  hover:-translate-y-1 cursor-pointer rounded-4xl pr-4 hover:font-bold  items-center  justify-center ">
-            <GoProjectSymlink className="text-4xl  bg-red-600 p-[6px] rounded-full" />
+      <div className=' flex   relative font-["Mulish","Helvetica Neue",sans-serif] items-center justify-between gap-10'>
+        <Link id="link" to={"/projects"}>
+          <div className="flex head gap-1 overflow-hidden hover:bg-[#ff000058] bg-black transition-all active:scale-[0.6]  duration-500  hover:-translate-y-1 cursor-pointer rounded-4xl pr-4 hover:font-bold  items-center  justify-center ">
+            <GoProjectSymlink className="text-4xl text-red-200 bg-[#A60002] p-[6px] rounded-full" />
             <h3 className="w-[70px] ">PROJECTS</h3>
           </div>
         </Link>
-        <Link to={"/contact"}>
-          <div className="projects flex gap-1 hover:bg-[#ff000058] bg-black transition-all active:scale-[0.6]  duration-500  hover:-translate-y-1 cursor-pointer rounded-4xl pr-4 hover:font-bold items-center justify-center">
-            <SiMinutemailer className="text-4xl bg-red-600 p-[6px] rounded-full" />
+        <Link id="link" to={"/contact"}>
+          <div className="projects head overflow-hidden  flex gap-1 hover:bg-[#ff000058] bg-black transition-all active:scale-[0.6]  duration-500  hover:-translate-y-1 cursor-pointer rounded-4xl pr-4 hover:font-bold items-center justify-cente">
+            <SiMinutemailer className="text-4xl text-red-200 bg-[#A60002] p-[6px] rounded-full" />
             <h3 className="w-[70px]">CONTACT</h3>
           </div>
         </Link>
-        <div className="contact flex gap-1 hover:bg-[#ff000058] bg-black active:scale-[0.6] transition-all duration-500 hover:-translate-y-1 cursor-pointer rounded-4xl pr-4 hover:font-bold items-center justify-center">
-          <TbListDetails className="text-4xl bg-red-600 p-[6px] rounded-full" />
+      <Link  id="link" to={"/"}>
+      <div className="contact head overflow-hidden  flex gap-1 hover:bg-[#ff000058] bg-black active:scale-[0.6] transition-all duration-500 hover:-translate-y-1 cursor-pointer rounded-4xl pr-4 hover:font-bold items-center justify-center">
+          <TbListDetails className="text-4xl text-red-200 bg-[#A60002] p-[6px] rounded-full" />
           <h3 className="w-[70px]">RESUME</h3>
-        </div>
+        </div> 
+      </Link>
 
         {/* <div
           ref={projectRef}

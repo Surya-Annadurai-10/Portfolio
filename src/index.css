@@ -9,6 +9,17 @@
   font-family: "Mulish","Helvetica Neue",sans-serif; 
 } */
 
+@font-face {
+  font-family: 'race';
+  src: url('./fonts/RushDriver-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'stretch';
+  src: url('../src/fonts/DeliriumNcv-Vm5e.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: 'Lokicola';
@@ -52,8 +63,9 @@ body{
   mask-position: center;
   mask-size: 54%;
   mask-repeat: no-repeat;
-  transform: rotateZ(270deg);
+  /* transform: rotateZ(270deg); */
   /* height: 400px; */
+  overflow:hidden;
   
 } 
 
@@ -67,6 +79,32 @@ body{
    /* font-family: "kalnia"; */
 }
 
-.hero{
-  /* background-image: linear-gradient(to top , rgba(0, 0, 0, 0.284) , transparent); */
+
+
+.textCon1 span , .textCon2 span,.hellow span{
+  background-clip: text;
+  background: linear-gradient(to top, rgb(0, 0, 0) 1%, #ffffff 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+*::selection{
+  background-color: #A60002;
+  color:#fff
+}
+
+.cursor2{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #F1F1F1;
+  position: fixed; /* Ensures smooth movement across the screen */
+  /* opacity: 0.8; */
+  left: 50%;
+  transform: translate(-50%,-50%);
+  top : 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: difference;
 }
