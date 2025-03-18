@@ -11,6 +11,7 @@ import redux from "./assets/redux.svg"
 import java from "./assets/java.svg"
 import git from "./assets/git.png"
 import github from "./assets/Github.png"
+import expense from "./assets/projectsImg/expense.png"
 
 export const about = "I’m Surya Annadurai, an aspiring Full Stack Developer passionate about crafting seamless, high-impact digital solutions. With a deep drive for innovation and creativity, I blend intuitive design with robust functionality to build immersive user experiences. I thrive on solving complex challenges, optimizing performance, and pushing the boundaries of modern development. Committed to excellence, I believe in transforming ideas into reality through clean, efficient, and scalable code. Let’s build the future, one innovation at a time.🚀" 
 
@@ -77,3 +78,57 @@ export const skills = [
  
     
 ]
+
+
+export const projectsData = [
+    {
+        img :expense,
+        name : "Expense Tracker",
+        tech : [
+            html,css,js
+        ],
+        description: "Smart Expense Tracker is an AI-powered finance management app built with HTML, CSS, and JavaScript. It helps you track expenses, set budgets, and analyze spending patterns effortlessly. With AI-driven insights and interactive charts, you can make smarter financial decisions. Stay on top of your expenses with a clean, user-friendly interface!",
+        hostLink : "https://surya-annadurai-10.github.io/JS_Geekathon_Expense_Tracker_App/landingPage/landing.html",
+        githubLink : "https://github.com/Surya-Annadurai-10/JS_Geekathon_Expense_Tracker_App"
+    },
+    {
+        img :expense,
+        name : "Expense Tracker",
+        tech : [
+            html,css,js
+        ],
+        description: "Smart Expense Tracker is an AI-powered finance management app built with HTML, CSS, and JavaScript. It helps you track expenses, set budgets, and analyze spending patterns effortlessly. With AI-driven insights and interactive charts, you can make smarter financial decisions. Stay on top of your expenses with a clean, user-friendly interface!",
+        hostLink : "https://surya-annadurai-10.github.io/JS_Geekathon_Expense_Tracker_App/landingPage/landing.html",
+        githubLink : "https://github.com/Surya-Annadurai-10/JS_Geekathon_Expense_Tracker_App"
+    },
+    {
+        img :expense,
+        name : "Expense Tracker",
+        tech : [
+            html,css,js
+        ],
+        description: "Smart Expense Tracker is an AI-powered finance management app built with HTML, CSS, and JavaScript. It helps you track expenses, set budgets, and analyze spending patterns effortlessly. With AI-driven insights and interactive charts, you can make smarter financial decisions. Stay on top of your expenses with a clean, user-friendly interface!",
+        hostLink : "https://surya-annadurai-10.github.io/JS_Geekathon_Expense_Tracker_App/landingPage/landing.html",
+        githubLink : "https://github.com/Surya-Annadurai-10/JS_Geekathon_Expense_Tracker_App"
+    },
+    {
+        img :expense,
+        name : "Expense Tracker",
+        tech : [
+            html,css,js
+        ],
+        description: "Smart Expense Tracker is an AI-powered finance management app built with HTML, CSS, and JavaScript. It helps you track expenses, set budgets, and analyze spending patterns effortlessly. With AI-driven insights and interactive charts, you can make smarter financial decisions. Stay on top of your expenses with a clean, user-friendly interface!",
+        hostLink : "https://surya-annadurai-10.github.io/JS_Geekathon_Expense_Tracker_App/landingPage/landing.html",
+        githubLink : "https://github.com/Surya-Annadurai-10/JS_Geekathon_Expense_Tracker_App"
+    },{
+        img :expense,
+        name : "Expense Tracker",
+        tech : [
+            html,css,js
+        ],
+        description: "Smart Expense Tracker is an AI-powered finance management app built with HTML, CSS, and JavaScript. It helps you track expenses, set budgets, and analyze spending patterns effortlessly. With AI-driven insights and interactive charts, you can make smarter financial decisions. Stay on top of your expenses with a clean, user-friendly interface!",
+        hostLink : "https://surya-annadurai-10.github.io/JS_Geekathon_Expense_Tracker_App/landingPage/landing.html",
+        githubLink : "https://github.com/Surya-Annadurai-10/JS_Geekathon_Expense_Tracker_App"
+    }
+
+] 

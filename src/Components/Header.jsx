@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from "react";
-import logo from "../assets/hero.png";
+import logo from "../assets/logos/hero.png";
+import BlackLogo from "../assets/logos/logoBlack.png";
 import { GoProjectSymlink } from "react-icons/go";
 import { SiMinutemailer } from "react-icons/si";
 import { TbListDetails } from "react-icons/tb";
@@ -7,7 +8,7 @@ import { DataContext } from "../App";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 // import {motion} from "motion/react"
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -58,9 +59,20 @@ const Header = () => {
   return (
     <div ref={headContainerRef} className={`w-full overflow-hidden fixed z-[5] ${!ctx.blur ? "backdrop-blur-md" : null }  h-[11vh] flex items-center justify-between px-[2rem]`}>
       <Link  to={""}>
-      <div className="w-[80px] relative active:scale-[0.8] transition-all">
+     <AnimatePresence
+     initial ={{y : 100,scale : 0, opacity : 0}}
+     animate ={{y : 0,scale : 1 , opacity : 1 , duration : 1.5, ease : "easeInOut"}}
+     exit={{y : -100,scale : 0, opacity : 0}}
+     >
+
+     {
+        ctx.showWhiteLogo ? <div className="w-[80px] relative active:scale-[0.8] transition-all">
         <img className="w-full rounded-2xl inline-block" src={logo} alt="" />
+      </div> : <div className="w-[180px] mt-[1rem] -ml-[3rem]  relative active:scale-[0.8] transition-all">
+        <img className="w-full rounded-2xl inline-block" src={BlackLogo} alt="" />
       </div>
+      }
+     </AnimatePresence>
       </Link>
       <div className=' flex   relative font-["Mulish","Helvetica Neue",sans-serif] items-center justify-between gap-10'>
         <Link id="link" to={"/projects"}>

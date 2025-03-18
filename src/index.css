@@ -92,7 +92,7 @@ body {
 .textCon1 span,
 .textCon2 span,
 .hellow span,
-/* .projectsText, */
+.projectname,
 /* .skills, */
 .craftingText {
   background-clip: text;
@@ -106,14 +106,27 @@ body {
   color: #fff;
 }
 
+#projectsText{
+  background-clip: text;
+  background: #F1F1F1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .cursor2 {
-  width: 150px;
-  height: 150px;
+  /* width: 150px;
+  height: 150px; */
   border-radius: 50%;
-  background-color: #f1f1f1;
-  position: fixed; /* Ensures smooth movement across the screen */
+  /* background-color: #f1f1f1; */
+  background-color: #fff;
+  position: fixed; 
   /* opacity: 0.8; */
+  display: grid;
+  place-items: center;
+  font-weight: bold;
   left: 50%;
+  font-size: 1.5rem;
+  font-family: "Poppins";
   transform: translate(-50%, -50%);
   top: 50%;
   transform: translate(-50%, -50%);

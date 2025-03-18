@@ -5,7 +5,7 @@ import { IoBuildSharp } from "react-icons/io5";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { MdMyLocation } from "react-icons/md";
 import { MdExplore } from "react-icons/md";
-import { about, skills } from "../data";
+import { about, projectsData, skills } from "../data";
 import bgred from "../assets/redbg.jpg";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -13,8 +13,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DataContext } from "../App";
 // import { html } from "../assets/html.png"
 import SkillsCard from "../Components/SkillsCard";
-
-import ProjectSection from "../Components/ProjectSection";
+import expense from '../assets/projectsImg/expense.png'
+// import ProjectSection from "../Components/ProjectSection";
+import ProjectCard from "../Components/ProjectCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,6 +31,8 @@ const Home = () => {
   const skillsRef = useRef(null);
   const projectRef = useRef(null);
   const projectTextRef = useRef(null);
+  const ProjectConRef = useRef(null);
+  const ProjectCardCon = useRef(null);
   const context = useContext(DataContext);
 
   useEffect(() => {
@@ -156,14 +159,15 @@ const Home = () => {
             start: "top 40%",
             end: "top 0%",
 
-            onEnter: () => console.log("ENTERED"),
+            // onEnter: () => console.log("ENTERED"),
           },
         });
+
         craftTl
           .from(
             ".craftingText  ", // Start state
             {
-              y: -100,
+              y: 100,
               opacity: 0,
               duration: 2,
               ease: "power3.out",
@@ -176,11 +180,11 @@ const Home = () => {
             scrollTrigger: {
               trigger: craftRef.current,
               scroller: "body",
-              start: "top 40%",
+              start: "top 30%",
               end: "top -100%",
               scrub: 1,
               pin: ".craftingText",
-              onEnter: () => console.log("ENTERED"),
+              // onEnter: () => console.log("ENTERED"),
             },
           });
 
@@ -192,6 +196,7 @@ const Home = () => {
             trigger: skillsRef.current,
             scroller: "body",
             start: "top  center",
+            // markers:true
           },
         });
 
@@ -237,31 +242,73 @@ const Home = () => {
             },
           });
 
-          gsap.to(".projectsText" , {
-            scale:49,
-            x:855,
-            ease : "power3.out",
-            onComplete : () => {
-              console.log("Projects entered") 
-              projectTextRef.current.style.display = "none"
-              projectRef.current.style.backgroundColor = "#fff"
+        gsap.to(".projectsText", {
+          scale: 49,
+          x: 879,
+          ease: "power3.out",
+          onComplete: () => {
+            console.log("Projects entered");
+            context.setEnteredProjects(true);
+            context.setShowCursor2(true);
+            context.setShowCursor(false);
+            context.setShowWhiteLogo(false);
+            projectTextRef.current.style.display = "none";
+            projectRef.current.style.backgroundColor = "#F1F1F1";
+          },
+          scrollTrigger: {
+            trigger: projectRef.current,
+            scroller: "body",
+            start: "top 0%",
+            end: "top -80%",
+            scrub: 1,
+            pin: true,
+            // markers: true,
+            onEnterBack: () => {
+              console.log("Projects entered Back");
+              context.setEnteredProjects(false);
+              context.setShowCursor2(false);
+              context.setShowCursor(true);
+              context.setShowWhiteLogo(false);
+              context.setShowWhiteLogo(true);
+              projectTextRef.current.style.display = "block";
+              projectRef.current.style.backgroundColor = "#000";
             },
-            scrollTrigger :{
-              trigger : projectRef.current,
-              scroller : "body",
-              start : "top 0%",
-              end : "top -80%",
-              scrub : 1,
-              pin : true,
-              markers: true,
-              onEnterBack : () =>{
-                  console.log("Projects entered Back") 
-                  projectTextRef.current.style.display = "block"
-                  projectRef.current.style.backgroundColor = "#000"
-              }
-              
-            }
-          })
+          },
+        });
+
+        let projectConTl = gsap.timeline({
+          scrollTrigger : {
+            trigger : ProjectConRef.current,
+            scroller : "body",
+            start : "top top",
+            end : "top -200%",
+            // markers : true,
+            pin:true,
+            scrub : 1,
+         
+            
+           }
+        });
+        let y = 0;
+        projectConTl.to('.projectCard',{
+             top :55,
+             duration : 1,
+             ease : "power3.out",
+             stagger : 1,
+            
+             
+             
+            
+        })
+
+      //   {
+      //     scale : 0.8,
+      //     opacity : 0.8,
+      //     y : () => {
+      //       let y = y + 20;
+      //       return y;
+      //     }
+      // }
 
         // gsap.from(skillsRef.current , {
 
@@ -296,6 +343,22 @@ const Home = () => {
     },
     { scope: [wrapperRef, craftRef] }
   );
+
+
+  const handleProjectConEnter = () =>{
+    context.cursor2ref.current.style.width = "120px"
+    context.cursor2ref.current.style.height = "120px"
+    context.cursor2ref.current.innerHTML = "Go Live"
+
+    console.log(context);
+    
+  }
+  const handleProjectConLeave = () =>{
+    context.cursor2ref.current.style.width = "25px"
+    context.cursor2ref.current.style.height = "25px"
+    context.cursor2ref.current.innerHTML = ""
+
+  }
 
   const splitString = (char, i) => {
     if (
@@ -458,7 +521,7 @@ const Home = () => {
               </h2>
             </div>
           </div>
-          <div ref={craftRef} className="w-full h-[155vh] relative">
+          <div ref={craftRef} className="w-full h-[195vh] relative">
             <div>
               <img
                 className="absolute top-0 right-0 w-full h-full rotate-z-180 z-[0] shadow-[0px_0px_50px_50px_black]"
@@ -521,7 +584,7 @@ const Home = () => {
 
             <div
               className=" flex skillcardCon items-center  justify-start gap-[5rem]
-              absolute bg-[red]  right-[0%] bottom-[0%]"
+              absolute  right-[0%] bottom-[0%]"
             >
               {skills.map((ele, i) => {
                 let num;
@@ -552,13 +615,70 @@ const Home = () => {
               })}
             </div>
           </div>
-          <div ref={projectRef} className="">
-            <div className="w-full grid place-items-center h-[90vh] text-center font-[700]">
-              <h1 ref={projectTextRef} className="projectsText text-[15vw] uppercase ">Projects</h1>
+          <div ref={projectRef} className="bg-black">
+            <div className="w-full grid place-items-center h-[91vh] text-center font-[700]">
+              <h1
+                id="projectsText"
+                ref={projectTextRef}
+                className="projectsText text-[15vw] uppercase "
+              >
+                Projects
+              </h1>
             </div>
           </div>
-          <div className="w-full text-black  grid place-items-center h-screen bg-white">
-               <h1 className="text-[5rem]">Project cards</h1>
+          <div
+          ref={ProjectConRef}
+            onMouseEnter={() => {
+              context.setShowCursor2(true);
+              context.setShowCursor(false);
+              context.setEnteredProjects(true);
+            }}
+            onMouseLeave={() => {
+              context.setShowCursor2(false);
+              context.setShowCursor(true);
+              context.setEnteredProjects(false);
+            }}
+            className="w-full text-black flex items-center justify-center border-none relative border-t-emerald-800  h-screen bg-[#f1f1f1]"
+          >
+            {/* <div className="relative  flex items-center justify-center w-[10%] h-full">
+              <h1 className={`text-[4rem] underline ${context.ShowWhiteLogo ? 'text-[#f1f1f1]' : 'text-black'} whitespace-nowrap mt-[5rem] -rotate-z-90  font-['race']`}>
+                Recent Projects
+              </h1>
+            </div> */}
+
+            <div
+           
+            ref={ProjectCardCon} className="w-full  relative pt-[5rem]  projectCard grid place-items-center h-screen ">
+                <div
+             
+                 className="bg-amber-600"
+                >
+                {
+                  projectsData.map((ele , i) =>{
+                    return <a href={ele.hostLink} target="_blank">
+                       <div 
+                    onMouseEnter={handleProjectConEnter}
+                    onMouseLeave={handleProjectConLeave}
+                    key={`${ele.name}_${i}`} className='min-w-[80%] projectCard absolute z-10 top-[100%] left-[10%] rounded-2xl min-h-[78%] '>
+                    <img className='w-full h-full rounded-2xl absolute z-1 ' src={ele.img} alt="" />
+                    <div className='absolute rounded-2xl w-full h-full left-0 top-0 right-0 bg-linear-to-t from-black via-30% to-transparent z-2'></div>
+                    <div className='flex items-center justify-between w-full h-[30%] px-10 absolute bottom-0 z-2'>
+                      <h1 className={"text-white projectname font-bold font-['Mulish','Helvetica Neue',sans-serif]  text-[5rem]"}>{ele.name}</h1>
+                      <div className='flex items-center  justify-center gap-4'>
+                       {
+                        ele.tech.map((ele , i) =>{
+                            return <img className='w-[50px]' src={ele} alt={`${i}`}/>
+                        })
+                       }
+                      </div>
+                    </div>
+                </div>
+                    </a>
+                  })
+                 }
+                </div>
+               
+            </div>
           </div>
         </div>
       </div>

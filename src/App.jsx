@@ -10,6 +10,7 @@ import Home from "./Containers/Home";
 import Layout from "./Containers/Layout";
 import Contact from "./Containers/Contact";
 import LocomotiveScroll from 'locomotive-scroll';
+import { AnimatePresence } from "motion/react";
 
 const locomotiveScroll = new LocomotiveScroll({
   el: document.querySelector("[data-scroll-container"),
@@ -42,11 +43,13 @@ const router = createBrowserRouter([
 function App() {
   const [showCursor, setShowCursor] = useState(false);
   const [showCursor2, setShowCursor2] = useState(false);
-
+  const [enteredProjects , setEnteredProjects] = useState(false);
+  const [showWhiteLogo , setShowWhiteLogo] = useState(true);
   const [showHero, setShowHero] = useState(true);
   const cursorRef = useRef(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [blur , setBlur] = useState(false)
+  const cursor2ref = useRef(null);
 
   // console.log(coordinates);
 
@@ -216,7 +219,7 @@ function App() {
         gsap.to(".cursor2" , {
           left: coords.x +1 ,
           top: coords.y +3,
-          duration: 0.8,
+          duration: 0.5,
           ease : "power3.out"
         })
         });
@@ -229,7 +232,26 @@ function App() {
 
   return (
     <>
-      {showCursor ? (
+     <AnimatePresence
+     initial={{
+      scale : 0,
+      opacity : 0,
+      duration : 1,
+      ease : "easeInOut"
+     }}
+     animate={{
+      scale:1,
+      opacity : 1,
+      duration : 1,
+      ease:"easeInOut"
+     }}
+     exit={{
+      scale : 0,
+      opacity : 0,
+      duration : 1,
+      ease : "easeInOut"
+     }}>
+     {showCursor ? (
         <>
           <div className="circle"></div>
           <div className="circle"></div>
@@ -274,15 +296,37 @@ function App() {
          
         </>
       ) : null}
+     </AnimatePresence>
 
-      {
+     <AnimatePresence 
+      initial={{
+        scale : 0,
+        opacity : 0,
+        duration : 2,
+        ease : "easeInOut"
+       }}
+       animate={{
+        scale:1,
+        opacity : 1,
+        duration : 2,
+        ease:"easeInOut"
+       }}
+       exit={{
+        scale : 0,
+        opacity : 0,
+        duration : 2,
+        ease : "easeInOut"
+       }}
+     >
+     {
         showCursor2 ?(
-          <div className="cursor2"></div>
+          <div ref={cursor2ref} className={`cursor2   ${enteredProjects ? 'w-[25px] h-[25px] bg-[black]' : 'w-[150px] h-[150px] bg-[#f1f1f1f1]'}`}></div>
         ) : null
       }
+     </AnimatePresence>
       {showHero ? (
         <>
-        <DataContext.Provider value={{coords,setShowCursor2,showCursor2,setBlur,blur , setCoords ,showCursor , setShowCursor}} >
+        <DataContext.Provider value={{coords,cursor2ref,setShowWhiteLogo,showWhiteLogo,setEnteredProjects,enteredProjects,setShowCursor2,showCursor2,setBlur,blur , setCoords ,showCursor , setShowCursor}} >
           <RouterProvider router={router} />
         </DataContext.Provider>
         </>
