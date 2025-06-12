@@ -47,7 +47,7 @@ function App() {
   const [showWhiteLogo , setShowWhiteLogo] = useState(true);
   const [showHero, setShowHero] = useState(true);
   const cursorRef = useRef(null);
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [coords, setCoords] = useState({ x: 100, y: 50 });
   const [blur , setBlur] = useState(false)
   const cursor2ref = useRef(null);
 
@@ -156,7 +156,7 @@ function App() {
     let timeOut = setTimeout(() => {
       setShowHero(true);
       setShowCursor(true);
-      // setShowCursor2(true);
+    
     }, 8200);
 
     const updateCoords = (e) => {
@@ -189,7 +189,7 @@ function App() {
             top: coords.y +3,
             scale : () => (cursorArr.length - i) / (cursorArr.length + (cursorArr.length) / 8) ,
              backgroundColor : colors[i] ,
-            duration: 0.008,
+            duration: 0.006,
             // duration : 0.008,
             ease : "power3.out"
           });
@@ -199,8 +199,8 @@ function App() {
         return () => ctx.revert();
       }
 
-      if (showCursor2) {
-        let ctx = gsap.context(() => {
+      if (showCursor2 || enteredProjects) {
+        let ctx2 = gsap.context(() => {
           // let cursorArr = gsap.utils.toArray(".cursor2")
           let tl = gsap.timeline();
         // cursorArr.forEach((ele , i) =>{
@@ -220,113 +220,71 @@ function App() {
           left: coords.x +1 ,
           top: coords.y +3,
           duration: 0.5,
+          scale: 1,
           ease : "power3.out"
         })
         });
 
-        return () => ctx.revert();
+        return () => ctx2.revert();
       }
     },
-    { scope: null, dependencies: [showCursor, coords] }
+    { scope: null, dependencies: [showCursor, enteredProjects, showCursor2, coords] }
   );
 
   return (
-    <>
-     <AnimatePresence
-     initial={{
-      scale : 0,
-      opacity : 0,
-      duration : 1,
-      ease : "easeInOut"
-     }}
-     animate={{
-      scale:1,
-      opacity : 1,
-      duration : 1,
-      ease:"easeInOut"
-     }}
-     exit={{
-      scale : 0,
-      opacity : 0,
-      duration : 1,
-      ease : "easeInOut"
-     }}>
-     {showCursor ? (
-        <>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-         
-        </>
-      ) : null}
-     </AnimatePresence>
+    <> 
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px] -z-[100]  bg-black"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
+          {/* <div className={` ${showCursor2 ? "opacity-100 w-[150px] h-[150px] bg-[#f1f1f1f1] " : "circle opacity-100 " } $ {!showCursor ? "bg-white" : null }   }`}></div> */}
 
-     <AnimatePresence 
-      initial={{
-        scale : 0,
-        opacity : 0,
-        duration : 2,
-        ease : "easeInOut"
-       }}
-       animate={{
-        scale:1,
-        opacity : 1,
-        duration : 2,
-        ease:"easeInOut"
-       }}
-       exit={{
-        scale : 0,
-        opacity : 0,
-        duration : 2,
-        ease : "easeInOut"
-       }}
-     >
-     {
-        showCursor2 ?(
-          <div ref={cursor2ref} className={`cursor2   ${enteredProjects ? 'w-[25px] h-[25px] bg-[black]' : 'w-[150px] h-[150px] bg-[#f1f1f1f1]'}`}></div>
-        ) : null
-      }
-     </AnimatePresence>
+      <div ref={cursor2ref} className={`cursor2 z-[100]  ${showCursor2 ? "opacity-100 w-[130px] h-[130px] scale-[1] bg-[#f1f1f1f1] " : "opacity-0 duration-200 scale-0 w-[0px] h-[0px]"}  ${enteredProjects ? 'opacity-100  w-[25px] h-[25px] bg-[black]' : ' bg-[#f1f1f1f1]'}`}></div>
+        
+
+   
       {showHero ? (
         <>
         <DataContext.Provider value={{coords,cursor2ref,setShowWhiteLogo,showWhiteLogo,setEnteredProjects,enteredProjects,setShowCursor2,showCursor2,setBlur,blur , setCoords ,showCursor , setShowCursor}} >
+          
+        
+          
           <RouterProvider router={router} />
         </DataContext.Provider>
         </>

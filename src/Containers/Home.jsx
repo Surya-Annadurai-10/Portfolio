@@ -100,7 +100,7 @@ const Home = () => {
 
         page2Tl.to(".hellow", {
           translateX: "-926%",
-          duration: 15,
+          duration: 20,
           repeat: -1,
           ease: "linear",
         });
@@ -176,12 +176,13 @@ const Home = () => {
           )
           .to(".craftingText", {
             translateX: "-78%",
+            // delay : 2.5,
             duration: 3,
             scrollTrigger: {
               trigger: craftRef.current,
               scroller: "body",
               start: "top 30%",
-              end: "top -100%",
+              end: "top -90%",
               scrub: 1,
               pin: ".craftingText",
               // onEnter: () => console.log("ENTERED"),
@@ -216,7 +217,7 @@ const Home = () => {
           })
           .to(".skillcard", {
             left: () => {
-              leftNum = leftNum + 93;
+              leftNum = leftNum + 91;
               return leftNum;
             },
             top: () => {
@@ -224,7 +225,7 @@ const Home = () => {
               return topNUm;
             },
             opacity: 1,
-
+            delay : 2,
             ease: "power3.out",
             duration: 1,
             stagger: 1,
@@ -289,9 +290,18 @@ const Home = () => {
             
            }
         });
-        let y = 0;
+        let topPro = 0;
+        let scalePro = 2.3;
         projectConTl.to('.projectCard',{
-             top :55,
+            //  top: () => {
+            //   topPro = topPro + 15;
+            //   return topPro;
+            // },
+            // scale : () =>{
+            //    scalePro = scalePro  +  0.1;
+            //    return scalePro;
+            // },
+            top : 60,
              duration : 1,
              ease : "power3.out",
              stagger : 1,
@@ -508,9 +518,11 @@ const Home = () => {
               ref={aboutRef}
               onMouseEnter={() => {
                 context.setShowCursor2(true);
+                // handleProjectConEnter
                 context.setShowCursor(false);
               }}
               onMouseLeave={() => {
+                // handleProjectConLeave
                 context.setShowCursor2(false);
                 context.setShowCursor(true);
               }}
@@ -521,7 +533,13 @@ const Home = () => {
               </h2>
             </div>
           </div>
-          <div ref={craftRef} className="w-full h-[195vh] relative">
+          <div ref={craftRef} 
+           onMouseEnter={() => {
+              // context.setShowCursor2(false);
+              context.setShowCursor(true);
+              context.setEnteredProjects(false);
+            }}
+          className="w-full h-[195vh] relative">
             <div>
               <img
                 className="absolute top-0 right-0 w-full h-full rotate-z-180 z-[0] shadow-[0px_0px_50px_50px_black]"
@@ -615,7 +633,19 @@ const Home = () => {
               })}
             </div>
           </div>
-          <div ref={projectRef} className="bg-black">
+          <div ref={projectRef}
+                      onMouseEnter={() => {
+              // context.setShowCursor2(true);
+              context.setShowCursor(false);
+              context.setEnteredProjects(true);
+              // handleProjectConLeave
+            }}
+            // onMouseLeave={() => {
+            //   context.setShowCursor2(false);
+            //   context.setShowCursor(true);
+            //   context.setEnteredProjects(false);
+            // }}
+          className="bg-black">
             <div className="w-full grid place-items-center h-[91vh] text-center font-[700]">
               <h1
                 id="projectsText"
@@ -628,13 +658,13 @@ const Home = () => {
           </div>
           <div
           ref={ProjectConRef}
-            onMouseEnter={() => {
-              context.setShowCursor2(true);
-              context.setShowCursor(false);
-              context.setEnteredProjects(true);
-            }}
+            // onMouseEnter={() => {
+            //   context.setShowCursor2(true);
+            //   context.setShowCursor(false);
+            //   context.setEnteredProjects(true);
+            // }}
             onMouseLeave={() => {
-              context.setShowCursor2(false);
+              // context.setShowCursor2(false);
               context.setShowCursor(true);
               context.setEnteredProjects(false);
             }}
@@ -648,7 +678,7 @@ const Home = () => {
 
             <div
            
-            ref={ProjectCardCon} className="w-full  relative pt-[5rem]  projectCard grid place-items-center h-screen ">
+            ref={ProjectCardCon} className="w-full border-red-500 border relative pt-[5rem]  projectCard grid place-items-center h-screen ">
                 <div
              
                  className="bg-amber-600"
