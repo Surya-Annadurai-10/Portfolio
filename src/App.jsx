@@ -219,7 +219,7 @@ function App() {
         gsap.to(".cursor2" , {
           left: coords.x +1 ,
           top: coords.y +3,
-          duration: 0.5,
+          duration: 0.1,
           scale: 1,
           ease : "power3.out"
         })

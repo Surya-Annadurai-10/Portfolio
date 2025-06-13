@@ -17,6 +17,7 @@ import codepen from "./assets/projectsImg/codepen.png";
 import googleDrive from "./assets/projectsImg/googleDrive.png";
 import Trello from "./assets/projectsImg/Trello.png";
 import exercise from "./assets/projectsImg/exercise.png";
+import sunEstates from "./assets/projectsImg/sunEstates.png";
 
 export const about =
   "I’m Surya Annadurai, an aspiring Full Stack Developer passionate about crafting seamless, high-impact digital solutions. With a deep drive for innovation and creativity, I blend intuitive design with robust functionality to build immersive user experiences. I thrive on solving complex challenges, optimizing performance, and pushing the boundaries of modern development. Committed to excellence, I believe in transforming ideas into reality through clean, efficient, and scalable code. Let’s build the future, one innovation at a time.🚀";
@@ -98,6 +99,15 @@ export const projectsData = [
         githubLink: "https://github.com/Surya-Annadurai-10/React_CodePen_Clone",
       }
     ,
+    {
+       img: sunEstates,
+       name: "Sun Estates",
+       tech: [react, tailwindcss, nodejs , mongodb , expressjs],
+       description: `Sun Estates is a modern, full-featured real estate platform built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to browse and view property listings, locate them via interactive maps, and securely connect with landlords or make purchases. It’s responsive across mobile, tablet, and desktop screens.`,
+       hostLink: "https://real-estate-broker-app-mern.onrender.com/",
+       githubLink: "https://github.com/Surya-Annadurai-10/Real_Estate_Broker_App_MERN",
+     }
+   ,
     {
         img: googleDrive,
         name: "Google Drive Clone",

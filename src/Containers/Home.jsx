@@ -8,14 +8,19 @@ import { MdExplore } from "react-icons/md";
 import { about, projectsData, skills } from "../data";
 import bgred from "../assets/redbg.jpg";
 import gsap from "gsap";
+import coffee from "../assets/coffee.webp";
+
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DataContext } from "../App";
+
 // import { html } from "../assets/html.png"
 import SkillsCard from "../Components/SkillsCard";
-import expense from '../assets/projectsImg/expense.png'
+import expense from "../assets/projectsImg/expense.png";
 // import ProjectSection from "../Components/ProjectSection";
 import ProjectCard from "../Components/ProjectCard";
+import Contact from "../Components/ContactSection.jsx";
+import ContactSection from "../Components/ContactSection.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +38,7 @@ const Home = () => {
   const projectTextRef = useRef(null);
   const ProjectConRef = useRef(null);
   const ProjectCardCon = useRef(null);
+  const contactRef = useRef(null);
   const context = useContext(DataContext);
 
   useEffect(() => {
@@ -98,9 +104,23 @@ const Home = () => {
           // },
         });
 
-        page2Tl.to(".hellow", {
+        page2Tl.to(".hellow" , {
           translateX: "-926%",
           duration: 20,
+          repeat: -1,
+          ease: "linear",
+        })
+        
+        gsap.to(".thanks" , {
+           translateX: "-38%",
+          duration: 15,
+          repeat: -1,
+          ease: "linear",
+        });
+
+         gsap.to(".thanks2" , {
+           translateX: "38%",
+          duration: 15,
           repeat: -1,
           ease: "linear",
         });
@@ -225,7 +245,7 @@ const Home = () => {
               return topNUm;
             },
             opacity: 1,
-            delay : 2,
+            delay: 2,
             ease: "power3.out",
             duration: 1,
             stagger: 1,
@@ -250,7 +270,7 @@ const Home = () => {
           onComplete: () => {
             console.log("Projects entered");
             context.setEnteredProjects(true);
-            context.setShowCursor2(true);
+            // context.setShowCursor2(true);
             context.setShowCursor(false);
             context.setShowWhiteLogo(false);
             projectTextRef.current.style.display = "none";
@@ -267,9 +287,9 @@ const Home = () => {
             onEnterBack: () => {
               console.log("Projects entered Back");
               context.setEnteredProjects(false);
-              context.setShowCursor2(false);
+              // context.setShowCursor2(false);
               context.setShowCursor(true);
-              context.setShowWhiteLogo(false);
+              // context.setShowWhiteLogo(false);
               context.setShowWhiteLogo(true);
               projectTextRef.current.style.display = "block";
               projectRef.current.style.backgroundColor = "#000";
@@ -278,97 +298,108 @@ const Home = () => {
         });
 
         let projectConTl = gsap.timeline({
-          scrollTrigger : {
-            trigger : ProjectConRef.current,
-            scroller : "body",
-            start : "top top",
-            end : "top -200%",
+          scrollTrigger: {
+            trigger: ProjectConRef.current,
+            scroller: "body",
+            start: "top top",
+            end: "top -200%",
             // markers : true,
-            pin:true,
-            scrub : 1,
-         
-            
-           }
+            pin: true,
+            scrub: 1,
+          },
         });
         let topPro = 0;
         let scalePro = 2.3;
-        projectConTl.to('.projectCard',{
-            //  top: () => {
-            //   topPro = topPro + 15;
-            //   return topPro;
-            // },
-            // scale : () =>{
-            //    scalePro = scalePro  +  0.1;
-            //    return scalePro;
-            // },
-            top : 60,
-             duration : 1,
-             ease : "power3.out",
-             stagger : 1,
-            
+        projectConTl.to(".projectCard", {
+          //  top: () => {
+          //   topPro = topPro + 15;
+          //   return topPro;
+          // },
+          // scale : () =>{
+          //    scalePro = scalePro  +  0.1;
+          //    return scalePro;
+          // },
+          top: 60,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 1,
+        });
+        let count = 0;
+        let ContactRefTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: contactRef.current,
+            scroller: "body",
+            start: "top top",
+            end: "100% 50%",
+            // markers : true,
+            pin: true,
+            scrub: 2,
+            onEnterBack : () =>{
+              // console.log("Scrub Completed" , count++);
+              context.setShowWhiteLogo(false);
+
+            }
+          },
+        });
+
+        ContactRefTl.to(
+          "#top_heading",
+          {
+            top: "-50%",
+          },
+          "abc"
+        )
+          .to(
+            "#bottom_heading",
+            {
+              bottom: "-50%",
              
-             
-            
-        })
-
-      //   {
-      //     scale : 0.8,
-      //     opacity : 0.8,
-      //     y : () => {
-      //       let y = y + 20;
-      //       return y;
-      //     }
-      // }
-
-        // gsap.from(skillsRef.current , {
-
-        //   ease : "power3.out",
-        //   scrollTrigger : {
-        //     trigger : skillsRef.current ,
-        //     scroller : "body",
-        //     start : "top 60%",
-        //     end : "top top",
-        //     scrub : 1,
-        //   }
-        // })
-
-        // craftTl.from(".crafting span", {
-        //  x : -100,
-        //  opacity : 0,
-        //  duration : 1,
-        //  ease : "power3.out",
-        //  stagger : 0.3,
-        // //  scrollTrigger : {
-        // //   trigger : craftRef.current,
-        // //   scroller : "body",
-        // //   start : "top 70%",
-        // //   end : "top top"
-        // //  }
-        // });
+            },
+            "abc"
+          )
+          .to(
+            "#top_h1",
+            {
+              top: "115%",
+            },
+            "abc"
+          )
+          .to(
+            "#bottom_h1",
+            {
+              bottom: "-185.5%",
+            },
+            "abc"
+          ).from("#coffeeText" , {
+             y : 300,
+             opacity : 0,
+              onStart: () =>{
+               console.log("bottom Completed" , count++);
+              context.setShowWhiteLogo(true);
+              },
+              
+          },"abc");
 
         ScrollTrigger.refresh();
       });
 
       return () => ctx.revert();
     },
-    { scope: [wrapperRef, craftRef] }
+    { scope: [wrapperRef, craftRef, contactRef] }
   );
 
-
-  const handleProjectConEnter = () =>{
-    context.cursor2ref.current.style.width = "120px"
-    context.cursor2ref.current.style.height = "120px"
-    context.cursor2ref.current.innerHTML = "Go Live"
+  const handleProjectConEnter = () => {
+    context.cursor2ref.current.style.width = "120px";
+    context.cursor2ref.current.style.height = "120px";
+    context.cursor2ref.current.innerHTML = "Go Live";
 
     console.log(context);
-    
-  }
-  const handleProjectConLeave = () =>{
-    context.cursor2ref.current.style.width = "25px"
-    context.cursor2ref.current.style.height = "25px"
-    context.cursor2ref.current.innerHTML = ""
-
-  }
+  };
+  const handleProjectConLeave = () => {
+    context.cursor2ref.current.style.width = "25px";
+    context.cursor2ref.current.style.height = "25px";
+    context.cursor2ref.current.innerHTML = "";
+  };
 
   const splitString = (char, i) => {
     if (
@@ -533,13 +564,15 @@ const Home = () => {
               </h2>
             </div>
           </div>
-          <div ref={craftRef} 
-           onMouseEnter={() => {
+          <div
+            ref={craftRef}
+            onMouseEnter={() => {
               // context.setShowCursor2(false);
               context.setShowCursor(true);
               context.setEnteredProjects(false);
             }}
-          className="w-full h-[195vh] relative">
+            className="w-full h-[195vh] relative"
+          >
             <div>
               <img
                 className="absolute top-0 right-0 w-full h-full rotate-z-180 z-[0] shadow-[0px_0px_50px_50px_black]"
@@ -633,8 +666,9 @@ const Home = () => {
               })}
             </div>
           </div>
-          <div ref={projectRef}
-                      onMouseEnter={() => {
+          <div
+            ref={projectRef}
+            onMouseEnter={() => {
               // context.setShowCursor2(true);
               context.setShowCursor(false);
               context.setEnteredProjects(true);
@@ -645,7 +679,8 @@ const Home = () => {
             //   context.setShowCursor(true);
             //   context.setEnteredProjects(false);
             // }}
-          className="bg-black">
+            className="bg-black"
+          >
             <div className="w-full grid place-items-center h-[91vh] text-center font-[700]">
               <h1
                 id="projectsText"
@@ -657,12 +692,12 @@ const Home = () => {
             </div>
           </div>
           <div
-          ref={ProjectConRef}
-            // onMouseEnter={() => {
-            //   context.setShowCursor2(true);
-            //   context.setShowCursor(false);
-            //   context.setEnteredProjects(true);
-            // }}
+            ref={ProjectConRef}
+            onMouseEnter={() => {
+              // context.setShowCursor2(true);
+              context.setShowCursor(false);
+              context.setEnteredProjects(true);
+            }}
             onMouseLeave={() => {
               // context.setShowCursor2(false);
               context.setShowCursor(true);
@@ -677,37 +712,145 @@ const Home = () => {
             </div> */}
 
             <div
-           
-            ref={ProjectCardCon} className="w-full border-red-500 border relative pt-[5rem]  projectCard grid place-items-center h-screen ">
-                <div
-             
-                 className="bg-amber-600"
-                >
-                {
-                  projectsData.map((ele , i) =>{
-                    return <a href={ele.hostLink} target="_blank">
-                       <div 
-                    onMouseEnter={handleProjectConEnter}
-                    onMouseLeave={handleProjectConLeave}
-                    key={`${ele.name}_${i}`} className='min-w-[80%] projectCard absolute z-10 top-[100%] left-[10%] rounded-2xl min-h-[78%] '>
-                    <img className='w-full h-full rounded-2xl absolute z-1 ' src={ele.img} alt="" />
-                    <div className='absolute rounded-2xl w-full h-full left-0 top-0 right-0 bg-linear-to-t from-black via-30% to-transparent z-2'></div>
-                    <div className='flex items-center justify-between w-full h-[30%] px-10 absolute bottom-0 z-2'>
-                      <h1 className={"text-white projectname font-bold font-['Mulish','Helvetica Neue',sans-serif]  text-[5rem]"}>{ele.name}</h1>
-                      <div className='flex items-center  justify-center gap-4'>
-                       {
-                        ele.tech.map((ele , i) =>{
-                            return <img className='w-[50px]' src={ele} alt={`${i}`}/>
-                        })
-                       }
+              ref={ProjectCardCon}
+              className="w-full  relative pt-[5rem]  projectCard grid place-items-center h-screen "
+            >
+              <div className="bg-amber-600">
+                {projectsData.map((ele, i) => {
+                  return (
+                    <a href={ele.hostLink} target="_blank">
+                      <div
+                        onMouseEnter={handleProjectConEnter}
+                        onMouseLeave={handleProjectConLeave}
+                        key={`${ele.name}_${i}`}
+                        className="min-w-[80%] projectCard absolute z-10 top-[100%] left-[10%] rounded-2xl min-h-[78%] "
+                      >
+                        <img
+                          className="w-full h-full rounded-2xl absolute z-1 "
+                          src={ele.img}
+                          alt=""
+                        />
+                        <div className="absolute rounded-2xl w-full h-full left-0 top-0 right-0 bg-linear-to-t from-black via-30% to-transparent z-2"></div>
+                        <div className="flex items-center justify-between w-full h-[30%] px-10 absolute bottom-0 z-2">
+                          <h1
+                            className={
+                              "text-white projectname font-bold font-['Mulish','Helvetica Neue',sans-serif]  text-[5rem]"
+                            }
+                          >
+                            {ele.name}
+                          </h1>
+                          <div className="flex items-center  justify-center gap-4">
+                            {ele.tech.map((ele, i) => {
+                              return (
+                                <img
+                                  className="w-[50px]"
+                                  src={ele}
+                                  alt={`${i}`}
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                </div>
                     </a>
-                  })
-                 }
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* ------contactref */}
+          <div
+            ref={contactRef}
+            id="Contact_container"
+            className="relative overflow-hidden container_connect"
+          >
+            <div
+              id="top_heading"
+              className="bg-[#F1F1F1]  overflow-hidden absolute top-0 w-full h-[50vh]"
+            >
+              <h1
+                id="top_h1"
+                className="text-[14vw] absolute left-[50%] top-[96%]  -translate-x-[50%] -translate-y-[50%]  font-[milker]  text-black"
+              >
+                DAZZLED?
+              </h1>
+            </div>
+            <div className="w-full flex items-center flex-col justify-center text-white h-screen bg-black ">
+              <div id="coffeeText" className="flex items-center flex-col gap-10 justify-center text-white">
+                <div className="text-[4vw] flex items-center justify-center gap-3 font-[milker]">
+                  <h1>DROP A MAIL , LETS HAVE A COFFEE</h1>
+                  <img className="w-[100px]" src={coffee} alt="" />
                 </div>
-               
+                
+               <button className="w-[250px] hover:shadow-2xl hover:scale-[1.1] transition-all overflow-hidden border border-white connectButton relative font-[milker] flex items-center justify-center gap-3 h-[70px] rounded-full  bg-white text-black">
+                <div className="w-[30px] transition-all duration-500 absolute left-[12%]  connect hover:w-[250px] hover:h-[70px]  bg-[#2aff04] h-[30px] rounded-full "></div>
+                <h1 className="text-3xl right-[15%] absolute z-5">Connect</h1>
+               </button>
+              </div>
+            </div>
+            <div
+              id="bottom_heading"
+              className="bg-[#F1F1F1] overflow-hidden absolute bottom-0 w-full h-[50vh]"
+            >
+              <h1
+                id="bottom_h1"
+                className="text-[14vw]  absolute left-[50%] top-[50%] -bottom-[146.5%] -translate-x-[50%] -translate-y-[50%]  font-[milker]  text-black"
+              >
+                DAZZLED?
+              </h1>
+            </div>
+          </div>
+
+          <div className="w-full font-[milker] gap-3 h-[50vh] flex items-center justify-center flex-col  bg-[black]">
+            <div className="flex thanks font-bold text-4xl items-center justify-center text-white gap-2 ">
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+            
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+            
+            </div>
+            <div className="flex thanks2 font-bold text-4xl items-center justify-center text-white gap-2 ">
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+
             </div>
           </div>
         </div>
