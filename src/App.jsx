@@ -15,7 +15,7 @@ import { AnimatePresence } from "motion/react";
 const locomotiveScroll = new LocomotiveScroll({
   el: document.querySelector("[data-scroll-container"),
   smooth : true,
-  lerp : 0.01
+  lerp : 0.001
 });
 
 
@@ -219,7 +219,7 @@ function App() {
         gsap.to(".cursor2" , {
           left: coords.x +1 ,
           top: coords.y +3,
-          duration: 0.1,
+          duration: 0.001,
           scale: 1,
           ease : "power3.out"
         })
@@ -273,7 +273,6 @@ function App() {
           <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
           <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
           <div className={` ${showCursor ? "circle opacity-100 " : " opacity-0 w-[0px]  bg-black -z-[100]"  }`}></div>
-          {/* <div className={` ${showCursor2 ? "opacity-100 w-[150px] h-[150px] bg-[#f1f1f1f1] " : "circle opacity-100 " } $ {!showCursor ? "bg-white" : null }   }`}></div> */}
 
       <div ref={cursor2ref} className={`cursor2 z-[100]  ${showCursor2 ? "opacity-100 w-[130px] h-[130px] scale-[1] bg-[#f1f1f1f1] " : "opacity-0 duration-200 scale-0 w-[0px] h-[0px]"}  ${enteredProjects ? 'opacity-100  w-[25px] h-[25px] bg-[black]' : ' bg-[#f1f1f1f1]'}`}></div>
         

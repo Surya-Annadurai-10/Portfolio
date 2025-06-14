@@ -84,7 +84,17 @@ export const skills = [
 
 export const projectsData = [
 
+  
     {
+       img: sunEstates,
+       name: "Sun Estates",
+       tech: [react, tailwindcss, nodejs , mongodb , expressjs],
+       description: `Sun Estates is a modern, full-featured real estate platform built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to browse and view property listings, locate them via interactive maps, and securely connect with landlords or make purchases. It’s responsive across mobile, tablet, and desktop screens.`,
+       hostLink: "https://real-estate-broker-app-mern.onrender.com/",
+       githubLink: "https://github.com/Surya-Annadurai-10/Real_Estate_Broker_App_MERN",
+     }
+   ,
+     {
         img: codepen,
         name: "CodePen AI",
         tech: [react, tailwindcss, firebase],
@@ -100,18 +110,9 @@ export const projectsData = [
       }
     ,
     {
-       img: sunEstates,
-       name: "Sun Estates",
-       tech: [react, tailwindcss, nodejs , mongodb , expressjs],
-       description: `Sun Estates is a modern, full-featured real estate platform built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to browse and view property listings, locate them via interactive maps, and securely connect with landlords or make purchases. It’s responsive across mobile, tablet, and desktop screens.`,
-       hostLink: "https://real-estate-broker-app-mern.onrender.com/",
-       githubLink: "https://github.com/Surya-Annadurai-10/Real_Estate_Broker_App_MERN",
-     }
-   ,
-    {
         img: googleDrive,
         name: "Google Drive Clone",
-        tech: [react , firebase],
+        tech: [react ,tailwindcss, firebase ],
         description:
           "Google Drive Clone is a cloud storage web application that allows users to store and manage any type of files with full CRUD (Create, Read, Update, Delete) operations. The application also features Gemini AI-powered Google Notes, MyTasks for task management, and Google Calendar integration. It is built using Firebase for database and storage, Redux for state management, and follows a responsive design approach with minor usage of Tailwind CSS and modular CSS for styling.",
         hostLink:
@@ -119,17 +120,18 @@ export const projectsData = [
         githubLink:
           "https://github.com/Surya-Annadurai-10/React_Geekathon_GoogleDrive_Clone",
       },
-  {
-    img: expense,
-    name: "Expense Tracker",
-    tech: [html, css, js],
+        {
+    img: exercise,
+    name: "Physical Health Website",
+    tech: [react],
     description:
-      "Smart Expense Tracker is an AI-powered finance management app built with HTML, CSS, and JavaScript. It helps you track expenses, set budgets, and analyze spending patterns effortlessly. With AI-driven insights and interactive charts, you can make smarter financial decisions. Stay on top of your expenses with a clean, user-friendly interface!",
+      "Your Physical Health website is a React-based platform that provides valuable health-related insights and resources. It leverages RapidAPI for real-time data fetching, ensuring users get up-to-date information. The site features pagination for smooth navigation and an organized browsing experience. Designed for accessibility and responsiveness, it caters to users across all devices. This platform empowers individuals to make informed health decisions with ease. 🚀",
     hostLink:
-      "https://surya-annadurai-10.github.io/JS_Geekathon_Expense_Tracker_App/landingPage/landing.html",
+      "https://react-day9-cw-physical-health-website.vercel.app/",
     githubLink:
-      "https://github.com/Surya-Annadurai-10/JS_Geekathon_Expense_Tracker_App",
+      "https://github.com/Surya-Annadurai-10/React_Day9_CW_Physical_Health_Website",
   },
+ 
 
   {
     img: Trello,
@@ -142,18 +144,18 @@ export const projectsData = [
     githubLink:
       "https://github.com/Surya-Annadurai-10/React_Trello_Clone",
   },
-  
-  {
-    img: exercise,
-    name: "Physical Health Website",
-    tech: [react],
+   {
+    img: expense,
+    name: "Expense Tracker",
+    tech: [html, css, js],
     description:
-      "Your Physical Health website is a React-based platform that provides valuable health-related insights and resources. It leverages RapidAPI for real-time data fetching, ensuring users get up-to-date information. The site features pagination for smooth navigation and an organized browsing experience. Designed for accessibility and responsiveness, it caters to users across all devices. This platform empowers individuals to make informed health decisions with ease. 🚀",
+      "Smart Expense Tracker is an AI-powered finance management app built with HTML, CSS, and JavaScript. It helps you track expenses, set budgets, and analyze spending patterns effortlessly. With AI-driven insights and interactive charts, you can make smarter financial decisions. Stay on top of your expenses with a clean, user-friendly interface!",
     hostLink:
-      "https://react-day9-cw-physical-health-website.vercel.app/",
+      "https://surya-annadurai-10.github.io/JS_Geekathon_Expense_Tracker_App/landingPage/landing.html",
     githubLink:
-      "https://github.com/Surya-Annadurai-10/React_Day9_CW_Physical_Health_Website",
+      "https://github.com/Surya-Annadurai-10/JS_Geekathon_Expense_Tracker_App",
   },
+
  
   
 ];

@@ -19,8 +19,8 @@ import SkillsCard from "../Components/SkillsCard";
 import expense from "../assets/projectsImg/expense.png";
 // import ProjectSection from "../Components/ProjectSection";
 import ProjectCard from "../Components/ProjectCard";
-import Contact from "../Components/ContactSection.jsx";
-import ContactSection from "../Components/ContactSection.jsx";
+// import Contact from "../Components/ContactSection.jsx";
+// import ContactSection from "../Components/ContactSection.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,14 +113,14 @@ const Home = () => {
         
         gsap.to(".thanks" , {
            translateX: "-38%",
-          duration: 15,
+          duration: 20,
           repeat: -1,
           ease: "linear",
         });
 
          gsap.to(".thanks2" , {
            translateX: "38%",
-          duration: 15,
+          duration: 20,
           repeat: -1,
           ease: "linear",
         });
@@ -429,7 +429,7 @@ const Home = () => {
       );
     } else {
       return (
-        <div key={`${char}-${i}`} className="overflow-hidden">
+        <div key={`${char}-#${i}`} className="overflow-hidden">
           <span className="hover:scale-[1.1] text-[#515151]">{`${char} `}</span>
         </div>
       );
@@ -437,6 +437,7 @@ const Home = () => {
   };
 
   return (
+  // <></>
     <div className="">
       <div className="flex absolute top-[35%] -left-15 z-50 rotate-z-90 text-xl font-['Mulish','Helvetica Neue',sans-serif]   gap-2 overflow-x-hidden bg-[#ff000037]    rounded-4xl pr-4 py-1  items-center  justify-center ">
         <MdExplore className="text-4xl text-red-200 bg-[#A60002] p-[6px] rounded-full" />
@@ -592,37 +593,9 @@ const Home = () => {
                 <span className="child text-[18rem] ">Skills</span>
               </h1>
             </div>
-
-            {/* <div className="craft_slide z-10  left-0  top-1/2 transform -translate-x-0 -translate-y-1/2 absolute text-white text-[16vw] px-[5rem] flex items-center justify-start gap-15 whitespace-nowrap font-['milker'] ">
-              <div className="crafting   flex items-center justify-center ">
-                    <p  className="craft">C</p>
-                    <p className="craft">r</p>
-                    <p className="craft">a</p>
-                    <p className="craft">f</p>
-                    <p className="craft">t</p>
-                    <p className="craft">i</p>
-                    <p className="craft">n</p>
-                    <p className="craft">g</p>
-
-                  
-
-                {"Crafting".split("").map((ele, i) => {
-                  return (
-                    <span id="span" className="" key={`${ele}_${i}`}>
-                      {ele}
-                    </span>
-                  );
-                })}
-              </div>
-
-              {"the Web with These Skills".split(" ").map((ele, i) => (
-                <div key={`${ele}=${i}`}>
-                  <h1>{ele}</h1>
-                </div>
-              ))}
-            </div> */}
           </div>
           <div
+        
             ref={skillsRef}
             className="w-full flex rounded-3xl overflow-hidden relative justify-center items-center  h-screen bg-[black]"
           >
@@ -648,8 +621,7 @@ const Home = () => {
 
                 // }
                 return (
-                  <div
-                    key={`${ele.img}_${i}`}
+                  <div key={`${ele.img}_${i}`}
                     className="bg-[#00000000] opacity-0 absolute  backdrop-blur-md  skillcard  z-[5]  border border-[#5c5c5c] text-white  flex items-center justify-center flex-col gap-5 w-[20vw] h-[50vh] rounded "
                   >
                     <h1 className="font-['milker']  absolute left-0 -z-[10] bottom-[85%] num text-[5vw]">
@@ -666,6 +638,7 @@ const Home = () => {
               })}
             </div>
           </div>
+          <div   id="skillsCon" className="w-full h-[1vh] bg-black"></div>
           <div
             ref={projectRef}
             onMouseEnter={() => {
@@ -718,11 +691,11 @@ const Home = () => {
               <div className="bg-amber-600">
                 {projectsData.map((ele, i) => {
                   return (
-                    <a href={ele.hostLink} target="_blank">
+                    <a key={`${ele.name}_${i * 3}`} href={ele.hostLink} target="_blank">
                       <div
                         onMouseEnter={handleProjectConEnter}
                         onMouseLeave={handleProjectConLeave}
-                        key={`${ele.name}_${i}`}
+                        
                         className="min-w-[80%] projectCard absolute z-10 top-[100%] left-[10%] rounded-2xl min-h-[78%] "
                       >
                         <img
@@ -743,6 +716,7 @@ const Home = () => {
                             {ele.tech.map((ele, i) => {
                               return (
                                 <img
+                                key={`${ele}_${i}`}
                                   className="w-[50px]"
                                   src={ele}
                                   alt={`${i}`}
@@ -783,10 +757,12 @@ const Home = () => {
                   <img className="w-[100px]" src={coffee} alt="" />
                 </div>
                 
-               <button className="w-[250px] hover:shadow-2xl hover:scale-[1.1] transition-all overflow-hidden border border-white connectButton relative font-[milker] flex items-center justify-center gap-3 h-[70px] rounded-full  bg-white text-black">
+              <a href={`mailto:hellosuryaannadurai@gmail.com`}>
+                 <button className="w-[250px] hover:shadow-2xl hover:scale-[1.1] transition-all overflow-hidden border border-white connectButton relative font-[milker] flex items-center justify-center gap-3 h-[70px] rounded-full  bg-white text-black">
                 <div className="w-[30px] transition-all duration-500 absolute left-[12%]  connect hover:w-[250px] hover:h-[70px]  bg-[#2aff04] h-[30px] rounded-full "></div>
                 <h1 className="text-3xl right-[15%] absolute z-5">Connect</h1>
                </button>
+              </a>
               </div>
             </div>
             <div
@@ -804,52 +780,52 @@ const Home = () => {
 
           <div className="w-full font-[milker] gap-3 h-[50vh] flex items-center justify-center flex-col  bg-[black]">
             <div className="flex thanks font-bold text-4xl items-center justify-center text-white gap-2 ">
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
             
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
             
             </div>
             <div className="flex thanks2 font-bold text-4xl items-center justify-center text-white gap-2 ">
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
-              <h1 className="whitespace-nowrap">Thanks for Visiting 🙏 • </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
 
             </div>
           </div>
