@@ -46,6 +46,7 @@ function App() {
   const [enteredProjects , setEnteredProjects] = useState(false);
   const [showWhiteLogo , setShowWhiteLogo] = useState(true);
   const [showHero, setShowHero] = useState(true);
+  // const [blackCursor, setBlackCursor] = useState(true);
   const cursorRef = useRef(null);
   const [coords, setCoords] = useState({ x: 100, y: 50 });
   const [blur , setBlur] = useState(false)

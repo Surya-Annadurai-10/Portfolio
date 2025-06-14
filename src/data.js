@@ -159,3 +159,11 @@ export const projectsData = [
  
   
 ];
+
+
+export const navData =[
+  {name:"Home" , link:"#"},
+  {name:"Projects" , link:"#skillsCon"},
+  {name:"Contact" , link:"#Contact_container"},
+  {name:"Resume" , link:"#"},
+]

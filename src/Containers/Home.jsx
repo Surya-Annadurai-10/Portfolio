@@ -6,14 +6,23 @@ import { BsPersonWorkspace } from "react-icons/bs";
 import { MdMyLocation } from "react-icons/md";
 import { MdExplore } from "react-icons/md";
 import { about, projectsData, skills } from "../data";
+import { MdClear } from "react-icons/md";
 import bgred from "../assets/redbg.jpg";
 import gsap from "gsap";
-import coffee from "../assets/coffee.webp";
+import logo from "../assets/logos/hero.png";
+import resume from "../assets/Resume.pdf"
 
+import coffee from "../assets/coffee.webp";
+import foot from "../assets/foot.jpg";
+import instagram from "../assets/instagram.jpg";
+import linkedin from "../assets/linkedin.svg";
+import github from "../assets/Github.png";
+import leetcode from "../assets/leetcode.png";
+import gfg from "../assets/gfg.png";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DataContext } from "../App";
-
+import { navData } from "../data";
 // import { html } from "../assets/html.png"
 import SkillsCard from "../Components/SkillsCard";
 import expense from "../assets/projectsImg/expense.png";
@@ -39,7 +48,9 @@ const Home = () => {
   const ProjectConRef = useRef(null);
   const ProjectCardCon = useRef(null);
   const contactRef = useRef(null);
+  const innerBoxRef = useRef([]);
   const context = useContext(DataContext);
+  const [openNav ,setOpenNav] = useState(false);
 
   useEffect(() => {
     // gsap.to([videoRef.current] , {
@@ -104,26 +115,30 @@ const Home = () => {
           // },
         });
 
-        page2Tl.to(".hellow" , {
+        page2Tl.to(".hellow", {
           translateX: "-926%",
-          duration: 20,
-          repeat: -1,
-          ease: "linear",
-        })
-        
-        gsap.to(".thanks" , {
-           translateX: "-38%",
           duration: 20,
           repeat: -1,
           ease: "linear",
         });
 
-         gsap.to(".thanks2" , {
-           translateX: "38%",
+        gsap.to(".thanks", {
+          translateX: "-38%",
           duration: 20,
           repeat: -1,
           ease: "linear",
         });
+
+        gsap.to(".thanks2", {
+          translateX: "38%",
+          duration: 20,
+          repeat: -1,
+          ease: "linear",
+        });
+
+        // gsap.from("",{
+
+        // })
 
         gsap.to(".char span", {
           color: "#D5D5D5",
@@ -334,11 +349,10 @@ const Home = () => {
             // markers : true,
             pin: true,
             scrub: 2,
-            onEnterBack : () =>{
+            onEnterBack: () => {
               // console.log("Scrub Completed" , count++);
               context.setShowWhiteLogo(false);
-
-            }
+            },
           },
         });
 
@@ -353,7 +367,6 @@ const Home = () => {
             "#bottom_heading",
             {
               bottom: "-50%",
-             
             },
             "abc"
           )
@@ -370,15 +383,50 @@ const Home = () => {
               bottom: "-185.5%",
             },
             "abc"
-          ).from("#coffeeText" , {
-             y : 300,
-             opacity : 0,
-              onStart: () =>{
-               console.log("bottom Completed" , count++);
-              context.setShowWhiteLogo(true);
+          )
+          .from(
+            "#coffeeText",
+            {
+              y: 300,
+              opacity: 0,
+              onStart: () => {
+                console.log("bottom Completed", count++);
+                context.setShowWhiteLogo(true);
               },
+            },
+            "abc"
+          );
+
+          // gsap.from("#navPop",{
               
-          },"abc");
+          // })
+
+          document.querySelectorAll(".navHead").forEach((element,i)=>{
+            element.addEventListener("mouseenter",()=>{
+              gsap.to(innerBoxRef.current[i], { width: "70%", duration: 0.7, ease: "power3.out" });
+      });
+
+      element.addEventListener("mouseleave", () => {
+        gsap.to(innerBoxRef.current[i], { width: 0, duration: 0.7, ease: "power3.in" });
+      });
+
+          })
+
+        // innerBoxRef.current.parentElement.addEventListener("mouseenter", () => {
+        //   gsap.to(innerBoxRef.current, {
+        //     width: "100%",
+        //     duration: 0.6,
+        //     ease: "power2.out",
+        //   });
+        // });
+
+        // innerBoxRef.current.parentElement.addEventListener("mouseleave", () => {
+        //   gsap.to(innerBoxRef.current, {
+        //     width: "0%",
+        //     duration: 0.6,
+        //     ease: "power2.out",
+        //   });
+        // });
 
         ScrollTrigger.refresh();
       });
@@ -437,7 +485,7 @@ const Home = () => {
   };
 
   return (
-  // <></>
+    // <></>
     <div className="">
       <div className="flex absolute top-[35%] -left-15 z-50 rotate-z-90 text-xl font-['Mulish','Helvetica Neue',sans-serif]   gap-2 overflow-x-hidden bg-[#ff000037]    rounded-4xl pr-4 py-1  items-center  justify-center ">
         <MdExplore className="text-4xl text-red-200 bg-[#A60002] p-[6px] rounded-full" />
@@ -528,6 +576,111 @@ const Home = () => {
             </text>
           </svg>
         </div>
+
+        {/* Nav PopUp */}
+        <div id="navPop" className="w-[100%]   backdrop-blur-md flex items-center justify-start h-[100vh] fixed left-0 top-0 right-0 z-[600] bg-[#ff000076]">
+          <div className="w-[100px] absolute left-5  top-0  active:scale-[0.8] transition-all">
+                 <img className="w-full rounded-2xl inline-block" src={logo} alt="" />
+               </div>
+          <MdClear className="absolute p-2 top-30 font-bold text-black w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center right-10" />
+           <div className="flex absolute right-10 top-5 items-center justify-center gap-6">
+            <a
+
+            className="w-[50px]"
+              target="_blank"
+              href="https://github.com/Surya-Annadurai-10/Surya-Annadurai-10"
+            >
+              <img className="w-[50px] scale-[1.8]" src={github} alt="" />
+            </a>
+            <a target="_blank" href="https://linkedin.com/in/surya-annadurai">
+              <img className="w-[50px]" src={linkedin} alt="" />
+            </a>
+            <a href="" target="_blank">
+              <img className="w-[50px]" src={instagram} alt="" />
+            </a>
+
+            <a target="_blank" href="https://leetcode.com/u/Surya_Annadurai/">
+              <img className="w-[60px]" src={leetcode} alt="" />
+            </a>
+            <a
+              target="_blank"
+              href="https://www.geeksforgeeks.org/user/suryaannadu33zc/"
+            >
+              <img className="w-[62px]" src={gfg} alt="" />
+            </a>
+          </div>
+          <div className="ml-15 navcon mt-10 w-[100%] overflow-hidden">
+            {
+              navData.map((ele,index)=>{
+
+                if(ele.name=="Resume"){
+ return <a key={`${ele.name}_${index}`}  href={resume} download={"Surya Annadurai.pdf"} className="relative">
+              <div className="navHead relative  w-[100%] h-fit overflow-hidden">
+                <div
+                 ref={(el)=> innerBoxRef.current[index]=el}
+                  className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-45 bg-black"
+                ></div>
+                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
+                {ele.name}
+                </h1>
+              </div>
+            </a>
+                }else{
+return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
+              <div className="navHead relative  w-[100%] h-fit overflow-hidden">
+                <div
+                 ref={(el)=> innerBoxRef.current[index]=el}
+                  className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-45 bg-black"
+                ></div>
+                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
+                {ele.name}
+                </h1>
+              </div>
+            </a>
+                }
+
+                
+              })
+            }
+           
+            {/* <a href="#" className="relative">
+              <div className="navHead relative  w-[100%] h-fit overflow-hidden">
+                <div
+                  ref={innerBoxRef}
+                  className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-45 bg-black"
+                ></div>
+                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
+                  Home
+                </h1>
+              </div>
+            </a>
+            <a href="#projectText">
+              <div className="navHead relative  w-[100%] h-fit overflow-hidden">
+                <div className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-45 bg-black"></div>
+                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
+                  Projects
+                </h1>
+              </div>
+            </a>
+            <a href="#">
+              <div className="navHead relative  w-[100%] h-fit overflow-hidden">
+                <div className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-45 bg-black"></div>
+                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
+                  Contact
+                </h1>
+              </div>
+            </a>
+            <a href="">
+              <div className="navHead relative  w-[100%] h-fit overflow-hidden">
+                <div className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-45 bg-black"></div>
+                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
+                  Resume
+                </h1>
+              </div>
+            </a> */}
+          </div>
+        </div>
+
         <div>
           <div
             ref={page2Con}
@@ -595,7 +748,6 @@ const Home = () => {
             </div>
           </div>
           <div
-        
             ref={skillsRef}
             className="w-full flex rounded-3xl overflow-hidden relative justify-center items-center  h-screen bg-[black]"
           >
@@ -621,7 +773,8 @@ const Home = () => {
 
                 // }
                 return (
-                  <div key={`${ele.img}_${i}`}
+                  <div
+                    key={`${ele.img}_${i}`}
                     className="bg-[#00000000] opacity-0 absolute  backdrop-blur-md  skillcard  z-[5]  border border-[#5c5c5c] text-white  flex items-center justify-center flex-col gap-5 w-[20vw] h-[50vh] rounded "
                   >
                     <h1 className="font-['milker']  absolute left-0 -z-[10] bottom-[85%] num text-[5vw]">
@@ -638,7 +791,7 @@ const Home = () => {
               })}
             </div>
           </div>
-          <div   id="skillsCon" className="w-full h-[1vh] bg-black"></div>
+          <div id="skillsCon" className="w-full h-[1vh] bg-black"></div>
           <div
             ref={projectRef}
             onMouseEnter={() => {
@@ -691,11 +844,14 @@ const Home = () => {
               <div className="bg-amber-600">
                 {projectsData.map((ele, i) => {
                   return (
-                    <a key={`${ele.name}_${i * 3}`} href={ele.hostLink} target="_blank">
+                    <a
+                      key={`${ele.name}_${i * 3}`}
+                      href={ele.hostLink}
+                      target="_blank"
+                    >
                       <div
                         onMouseEnter={handleProjectConEnter}
                         onMouseLeave={handleProjectConLeave}
-                        
                         className="min-w-[80%] projectCard absolute z-10 top-[100%] left-[10%] rounded-2xl min-h-[78%] "
                       >
                         <img
@@ -716,7 +872,7 @@ const Home = () => {
                             {ele.tech.map((ele, i) => {
                               return (
                                 <img
-                                key={`${ele}_${i}`}
+                                  key={`${ele}_${i}`}
                                   className="w-[50px]"
                                   src={ele}
                                   alt={`${i}`}
@@ -751,18 +907,23 @@ const Home = () => {
               </h1>
             </div>
             <div className="w-full flex items-center flex-col justify-center text-white h-screen bg-black ">
-              <div id="coffeeText" className="flex items-center flex-col gap-10 justify-center text-white">
+              <div
+                id="coffeeText"
+                className="flex items-center flex-col gap-10 justify-center text-white"
+              >
                 <div className="text-[4vw] flex items-center justify-center gap-3 font-[milker]">
                   <h1>DROP A MAIL , LETS HAVE A COFFEE</h1>
                   <img className="w-[100px]" src={coffee} alt="" />
                 </div>
-                
-              <a href={`mailto:hellosuryaannadurai@gmail.com`}>
-                 <button className="w-[250px] hover:shadow-2xl hover:scale-[1.1] transition-all overflow-hidden border border-white connectButton relative font-[milker] flex items-center justify-center gap-3 h-[70px] rounded-full  bg-white text-black">
-                <div className="w-[30px] transition-all duration-500 absolute left-[12%]  connect hover:w-[250px] hover:h-[70px]  bg-[#2aff04] h-[30px] rounded-full "></div>
-                <h1 className="text-3xl right-[15%] absolute z-5">Connect</h1>
-               </button>
-              </a>
+
+                <a href={`mailto:hellosuryaannadurai@gmail.com`}>
+                  <button className="w-[250px] hover:shadow-2xl hover:scale-[1.1] transition-all overflow-hidden border border-white connectButton relative font-[milker] flex items-center justify-center gap-3 h-[70px] rounded-full  bg-white text-black">
+                    <div className="w-[30px] transition-all duration-500 absolute left-[12%]  connect hover:w-[250px] hover:h-[70px]  bg-[#2aff04] h-[30px] rounded-full "></div>
+                    <h1 className="text-3xl right-[15%] absolute z-5">
+                      Connect
+                    </h1>
+                  </button>
+                </a>
               </div>
             </div>
             <div
@@ -780,53 +941,51 @@ const Home = () => {
 
           <div className="w-full font-[milker] gap-3 h-[50vh] flex items-center justify-center flex-col  bg-[black]">
             <div className="flex thanks font-bold text-4xl items-center justify-center text-white gap-2 ">
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-            
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-            
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
             </div>
             <div className="flex thanks2 font-bold text-4xl items-center justify-center text-white gap-2 ">
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-              <h1 className="whitespace-nowrap">• Thanks for Visiting  • 🙏 </h1>
-
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
+              <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
             </div>
           </div>
         </div>
