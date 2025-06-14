@@ -15,7 +15,7 @@ import github from "./assets/Github.png";
 import expense from "./assets/projectsImg/expense.png";
 import codepen from "./assets/projectsImg/codepen.png";
 import googleDrive from "./assets/projectsImg/googleDrive.png";
-import Trello from "./assets/projectsImg/trello.png";
+import Trelloimg from "./assets/projectsImg/trello.png";
 import exercise from "./assets/projectsImg/exercise.png";
 import sunEstates from "./assets/projectsImg/sunEstates.png";
 
@@ -134,7 +134,7 @@ export const projectsData = [
  
 
   {
-    img: Trello,
+    img: Trelloimg,
     name: "Trello Clone",
     tech: [react],
     description:
