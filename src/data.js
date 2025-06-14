@@ -15,7 +15,7 @@ import github from "./assets/Github.png";
 import expense from "./assets/projectsImg/expense.png";
 import codepen from "./assets/projectsImg/codepen.png";
 import googleDrive from "./assets/projectsImg/googleDrive.png";
-import Trello from "./assets/projectsImg/Trello.png";
+import Trello from "./assets/projectsImg/trello.png";
 import exercise from "./assets/projectsImg/exercise.png";
 import sunEstates from "./assets/projectsImg/sunEstates.png";
 
