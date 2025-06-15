@@ -861,13 +861,12 @@ const Home = () => {
         </div>
 
         {/* Nav PopUp */}
-        <div id="navPop" className={`w-[100%] navPop   backdrop-blur-md flex items-center justify-start h-[100vh] fixed left-0 top-0  z-[600] bg-[#ff000076]`}>
+
+         <div id="navPop" className={`w-[100%] navPop   backdrop-blur-md flex items-center justify-start h-[100vh] fixed left-0 top-0  z-[600] bg-[#ff000076]`}>
           <div id="links" className="w-[100px] md:scale-[1] scale-[0.7] absolute left-2 -top-4  md:top-0  active:scale-[0.8] transition-all">
                  <img className="w-full rounded-2xl inline-block" src={logo} alt="" />
                </div>
-          {/* <MdClear onClick={() => 
-           {console.log("clock")}
-          } className="absolute p-2 top-30 font-bold text-black w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center right-10" /> */}
+        
            <div id="links" className="flex  absolute right-10 top-[92%] md:top-5 items-center justify-center gap-3">
             <a
 
@@ -964,7 +963,8 @@ const Home = () => {
               </div>
             </a> */}
           </div>
-        </div>
+        </div> 
+   
         <div id="ham" onClick={() => context.setOpenNav(!openNav)} className={`active:scale-[0.8] transition-all cursor-pointer z-[800]  fixed  right-5 md:scale-[1] scale-[0.7]  top-[3%] md:top-1/2 bg-red w-[50px] h-[50px] `}>
               
               <div id="top" className={`w-[50px] top  -skew-x-70 h-[4px] ${context.showWhiteLogo ? "bg-[#f1f1f1]" : "bg-black"}`}></div>
