@@ -31,7 +31,7 @@ const Footer = () => {
             >
               <img className="w-[50px]" src={github} alt="" />
             </a>
-            <a target="_blank" href="www.linkedin.com/in/surya-annadurai">
+            <a target="_blank" href="https://linkedin.com/in/surya-annadurai">
               <img className="w-[30px]" src={linkedin} alt="" />
             </a>
             <a href="" target="_blank">
