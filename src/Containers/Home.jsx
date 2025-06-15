@@ -51,6 +51,7 @@ const Home = () => {
   const innerBoxRef = useRef([]);
   const context = useContext(DataContext);
   const [openNav ,setOpenNav] = useState(false);
+  // const ctx = useContext(DataContext);
 
   useEffect(() => {
     // gsap.to([videoRef.current] , {
@@ -397,13 +398,83 @@ const Home = () => {
             "abc"
           );
 
+
+          let navTl = gsap.timeline({paused:true});
+         let navOpen = false;
+          navTl.from("#navPop" ,{
+                x : "-100%",
+                duration : 1,
+                opacity : 0,
+                ease : "back.inOut"
+          },"a").from("#links > a" , {
+                // x :-100,
+                duration : 1,
+                scale : 0,
+                ease : "back-inOut",
+                stagger :0.15,
+                opacity : 0,
+                delay : 0.5
+          },"a").from ("#navCon .navHead" , {
+                 x : "-200%",
+                duration : 1,
+                opacity : 0,
+                ease : "power3.out",
+                stagger : 0.15,
+                delay : 0.3
+          },"a")
+
+          let hamTl = gsap.timeline({paused:true});
+          
+          
+          hamTl.to("#center" , {
+          opacity : 0,
+          display : "none",
+            // delay : 1
+          },"a").to("#top" , {
+             rotateZ : 225,
+             translateY : 3,
+           
+             delay: 0.5
+          },"a").to("#bottom" , {
+             rotateZ : -225,
+             translateY : -0,
+            //  translateZ : -100,
+             delay: 0.5
+            
+
+          },"a")
+
+          // if(openNav){
+          //   console.log("navPop");
+            
+          //   navTl.play();
+          // }else{
+          //   navTl.pause();
+          // }
+
           // gsap.from("#navPop",{
               
           // })
 
+          document.querySelector("#ham").addEventListener("click" , () =>{
+            navOpen = !navOpen;
+            if(navOpen){
+                navTl.play();
+                hamTl.play();
+            }else{
+                navTl.reverse();
+                hamTl.reverse();
+
+            }
+          
+
+            console.log("hellow");
+            
+          })
+
           document.querySelectorAll(".navHead").forEach((element,i)=>{
             element.addEventListener("mouseenter",()=>{
-              gsap.to(innerBoxRef.current[i], { width: "70%", duration: 0.7, ease: "power3.out" });
+              gsap.to(innerBoxRef.current[i], { width: "100%", duration: 0.7, ease: "power3.out" });
       });
 
       element.addEventListener("mouseleave", () => {
@@ -578,47 +649,49 @@ const Home = () => {
         </div>
 
         {/* Nav PopUp */}
-        <div id="navPop" className="w-[100%]   backdrop-blur-md flex items-center justify-start h-[100vh] fixed left-0 top-0 right-0 z-[600] bg-[#ff000076]">
-          <div className="w-[100px] absolute left-5  top-0  active:scale-[0.8] transition-all">
+        <div id="navPop" className={`w-[100%] navPop   backdrop-blur-md flex items-center justify-start h-[100vh] fixed left-0 top-0  z-[600] bg-[#ff000076]`}>
+          <div id="links" className="w-[100px] absolute left-5  top-0  active:scale-[0.8] transition-all">
                  <img className="w-full rounded-2xl inline-block" src={logo} alt="" />
                </div>
-          <MdClear className="absolute p-2 top-30 font-bold text-black w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center right-10" />
-           <div className="flex absolute right-10 top-5 items-center justify-center gap-6">
+          {/* <MdClear onClick={() => 
+           {console.log("clock")}
+          } className="absolute p-2 top-30 font-bold text-black w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center right-10" /> */}
+           <div id="links" className="flex  absolute right-10 top-5 items-center justify-center gap-3">
             <a
 
-            className="w-[50px]"
+            className="w-[40px]"
               target="_blank"
               href="https://github.com/Surya-Annadurai-10/Surya-Annadurai-10"
             >
-              <img className="w-[50px] scale-[1.8]" src={github} alt="" />
+              <img className="w-[50px] hover:scale-[2] transition-all scale-[1.8]" src={github} alt="" />
             </a>
             <a target="_blank" href="https://linkedin.com/in/surya-annadurai">
-              <img className="w-[50px]" src={linkedin} alt="" />
+              <img className="w-[35px] hover:scale-[1.1]  mx-3" src={linkedin} alt="" />
             </a>
             <a href="" target="_blank">
-              <img className="w-[50px]" src={instagram} alt="" />
+              <img className="w-[37px] hover:scale-[1.1] transition-all" src={instagram} alt="" />
             </a>
 
             <a target="_blank" href="https://leetcode.com/u/Surya_Annadurai/">
-              <img className="w-[60px]" src={leetcode} alt="" />
+              <img className="w-[45px] hover:scale-[1.1] transition-all" src={leetcode} alt="" />
             </a>
             <a
               target="_blank"
               href="https://www.geeksforgeeks.org/user/suryaannadu33zc/"
             >
-              <img className="w-[62px]" src={gfg} alt="" />
+              <img className="w-[52px] hover:scale-[1.1] transition-all" src={gfg} alt="" />
             </a>
           </div>
-          <div className="ml-15 navcon mt-10 w-[100%] overflow-hidden">
+          <div id="navCon" className="ml-15 navcon mt-10 w-[100%] overflow-hidden">
             {
               navData.map((ele,index)=>{
 
                 if(ele.name=="Resume"){
  return <a key={`${ele.name}_${index}`}  href={resume} download={"Surya Annadurai.pdf"} className="relative">
-              <div className="navHead relative  w-[100%] h-fit overflow-hidden">
+              <div className="navHead relative  w-[75%] h-fit overflow-hidden">
                 <div
                  ref={(el)=> innerBoxRef.current[index]=el}
-                  className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-45 bg-black"
+                  className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-70 bg-black"
                 ></div>
                 <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
                 {ele.name}
@@ -627,10 +700,10 @@ const Home = () => {
             </a>
                 }else{
 return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
-              <div className="navHead relative  w-[100%] h-fit overflow-hidden">
+              <div className="navHead relative  w-[75%] h-fit overflow-hidden">
                 <div
                  ref={(el)=> innerBoxRef.current[index]=el}
-                  className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-45 bg-black"
+                  className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-70 bg-black"
                 ></div>
                 <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
                 {ele.name}
@@ -680,7 +753,16 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
             </a> */}
           </div>
         </div>
-
+        <div id="ham" onClick={() => setOpenNav(!openNav)} className={`active:scale-[0.8] transition-all cursor-pointer z-[800]  fixed  right-10   top-1/2 bg-red w-[50px] h-[50px] `}>
+              
+              <div id="top" className={`w-[50px] top  -skew-x-70 h-[4px] ${context.showWhiteLogo ? "bg-[#f1f1f1]" : "bg-black"}`}></div>
+              <div  id="center" className={`w-[50px] center  h-[5px] my-2 ${context.showWhiteLogo ? "bg-[#f1f1f1]" : "bg-black"}`}></div>
+              <div  id="bottom" className={`w-[50px] bottom -skew-x-70 h-[4px] ${context.showWhiteLogo ? "bg-[#f1f1f1]" : "bg-black"}`}></div>
+              {/* <div className="w-[50px] -skew-x-60 my-2  h-[3px] bg-white"></div>
+              <div className="w-[50px] -skew-x-60 h-[3px] bg-white"></div> */}
+              <div></div>
+              <div></div>
+        </div>
         <div>
           <div
             ref={page2Con}
