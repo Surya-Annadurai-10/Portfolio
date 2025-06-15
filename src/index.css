@@ -1,6 +1,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DynaPuff:wght@400..700&family=Faculty+Glyphic&family=Jaro:opsz@6..72&family=Lilita+One&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Parkinsans:wght@300..800&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Tilt+Neon&display=swap'); */
 @import url("https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Tilt+Neon&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Tilt+Neon&display=swap");
 @import "tailwindcss";
 
 /* 
@@ -68,10 +68,16 @@ body {
   mask-position: center;
   mask-size: 54%;
   mask-repeat: no-repeat;
-  /* transform: rotateZ(270deg); */
+  transform: rotateZ(270deg);
   /* height: 400px; */
   overflow: hidden;
 }
+
+/* @media screen and (min-width: 768px) and (max-width: 1024px) {
+  .mask {
+    mask-size: 100%;
+  }
+} */
 
 .span {
   background-clip: text;
@@ -88,13 +94,14 @@ body {
   -webkit-text-fill-color: transparent;
 } */
 
-
 .textCon1 span,
 .textCon2 span,
 .hellow span,
 .projectname,
 /* .skills, */
-.craftingText {
+.craftingText ,
+.craftingText2 
+{
   background-clip: text;
   background: linear-gradient(to top, rgb(0, 0, 0) 1%, #ffffff 70%);
   -webkit-background-clip: text;
@@ -106,9 +113,9 @@ body {
   color: #fff;
 }
 
-#projectsText{
+#projectsText {
   background-clip: text;
-  background: #F1F1F1;
+  background: #f1f1f1;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -119,7 +126,7 @@ body {
   border-radius: 50%;
   /* background-color: #f1f1f1; */
   background-color: #fff;
-  position: fixed; 
+  position: fixed;
   /* opacity: 0.8; */
   display: grid;
   place-items: center;
@@ -135,36 +142,37 @@ body {
   mix-blend-mode: difference;
 }
 
-
-#skills{
+#skills,#skills2, #skills3 {
   background-clip: text;
-  background: linear-gradient(to top, rgb(0, 0, 0) 10%, #ffffff 60% );
+  background: linear-gradient(to top, rgb(0, 0, 0) 10%, #ffffff 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transform: perspective(400px) rotateX(20deg);
   /* perspective: 800px; */
 }
 
-.num{
+.num {
   background-clip: text;
-  background: linear-gradient(to top, rgba(109, 109, 109, 0.713) 10%, #ffffff 60% );
+  background: linear-gradient(
+    to top,
+    rgba(109, 109, 109, 0.713) 10%,
+    #ffffff 60%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
 }
 
 /* html{
   scroll-behavior: smooth;
 } */
 
-
 .sacro {
-   font-family: "Sacramento";
-   font-weight: 400;
-   font-style: normal;
+  font-family: "Sacramento";
+  font-weight: 400;
+  font-style: normal;
 }
 
-.connectButton:hover .connect{
+.connectButton:hover .connect {
   width: 250px;
   height: 70px;
   border-radius: 35px;
@@ -173,9 +181,9 @@ body {
   background-color: black;
 }
 
-.connectButton:hover h1{
- color: white;
- right: 20%;
+.connectButton:hover h1 {
+  color: white;
+  right: 20%;
 }
 
 /* .navHead:hover .stripe{
@@ -183,9 +191,8 @@ mix-blend-mode: difference;
 z-index: 500;
 } */
 
-.navHead:hover h1{
+.navHead:hover h1 {
   padding-left: 50px;
   transition: all 0.1s ease-in-out;
   transform: skewX(-20deg);
 }
-

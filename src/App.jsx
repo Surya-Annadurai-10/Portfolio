@@ -1,14 +1,14 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import "./App.css";
 import Loader from "./Components/Loader";
-import Hero from "./Components/Hero";
+// import Hero from "./Components/Hero";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Projects from "./Containers/Projects";
+// import Projects from "./Containers/Projects";
 import Home from "./Containers/Home";
 import Layout from "./Containers/Layout";
-import Contact from "./Containers/Contact";
+// import Contact from "./Containers/Contact";
 import LocomotiveScroll from 'locomotive-scroll';
 import { AnimatePresence } from "motion/react";
 
@@ -28,14 +28,14 @@ const router = createBrowserRouter([
         path: "",
         element: <Home />,
       },
-      {
-        path: "/projects",
-        element: <Projects />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
+      // {
+      //   path: "/projects",
+      //   element: <Projects />,
+      // },
+      // {
+      //   path: "/contact",
+      //   element: <Contact />,
+      // },
     ],
   },
 ]);
@@ -47,6 +47,8 @@ function App() {
   const [showWhiteLogo , setShowWhiteLogo] = useState(true);
   const [showHero, setShowHero] = useState(true);
   // const [blackCursor, setBlackCursor] = useState(true);
+  const [openNav ,setOpenNav] = useState(false);
+
   const cursorRef = useRef(null);
   const [coords, setCoords] = useState({ x: 100, y: 50 });
   const [blur , setBlur] = useState(false)
@@ -281,7 +283,7 @@ function App() {
    
       {showHero ? (
         <>
-        <DataContext.Provider value={{coords,cursor2ref,setShowWhiteLogo,showWhiteLogo,setEnteredProjects,enteredProjects,setShowCursor2,showCursor2,setBlur,blur , setCoords ,showCursor , setShowCursor}} >
+        <DataContext.Provider value={{coords,setOpenNav,openNav,cursor2ref,setShowWhiteLogo,showWhiteLogo,setEnteredProjects,enteredProjects,setShowCursor2,showCursor2,setBlur,blur , setCoords ,showCursor , setShowCursor}} >
           
         
           

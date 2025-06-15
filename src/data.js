@@ -122,7 +122,7 @@ export const projectsData = [
       },
         {
     img: exercise,
-    name: "Physical Health Website",
+    name: "Excercise Buddy",
     tech: [react],
     description:
       "Your Physical Health website is a React-based platform that provides valuable health-related insights and resources. It leverages RapidAPI for real-time data fetching, ensuring users get up-to-date information. The site features pagination for smooth navigation and an organized browsing experience. Designed for accessibility and responsiveness, it caters to users across all devices. This platform empowers individuals to make informed health decisions with ease. 🚀",

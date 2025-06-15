@@ -58,7 +58,7 @@ const Header = () => {
 
   return (
     // <></>
-    <div ref={headContainerRef} className={`w-full overflow-hidden fixed z-[500] ${!ctx.blur ? "backdrop-blur-md" : null }  h-[11vh] flex items-center justify-between px-[2rem]`}>
+    <div ref={headContainerRef} className={`w-full overflow-hidden fixed z-[500] ${!ctx.blur ? "backdrop-blur-md" : null }  h-[11vh] flex items-center justify-between md:px-[2rem]`}>
       <a id="link" href="#" >
      <AnimatePresence
      initial ={{y : 100,scale : 0, opacity : 0}}
@@ -69,14 +69,14 @@ const Header = () => {
      {
         ctx.showWhiteLogo ? <div className="w-[80px] relative active:scale-[0.8] transition-all">
         <img className="w-full rounded-2xl inline-block" src={logo} alt="" />
-      </div> : <div className="w-[180px] mt-[1rem] -ml-[3rem]  relative active:scale-[0.8] transition-all">
+      </div> : <div className="md:w-[180px] w-[160px] mt-[1rem] -ml-[3rem]  md:-ml-[3rem]  relative active:scale-[0.8] transition-all">
         <img className="w-full rounded-2xl inline-block" src={BlackLogo} alt="" />
       </div>
       }
      </AnimatePresence>
       </a>
 
-      {ctx.blur ? <div className=' flex   relative font-["Mulish","Helvetica Neue",sans-serif] items-center justify-between gap-10'>
+      {ctx.blur ? <div className=' md:flex  hidden relative font-["Mulish","Helvetica Neue",sans-serif] items-center justify-between gap-10'>
         <a id="link"  href={"#skillsCon"}>
           <div className="flex head gap-1 overflow-hidden hover:bg-[#ff000058] bg-black transition-all active:scale-[0.6]  duration-500  hover:-translate-y-1 cursor-pointer rounded-4xl pr-4 hover:font-bold  items-center  justify-center ">
             <GoProjectSymlink className="text-4xl text-red-200 bg-[#A60002] p-[6px] rounded-full" />
@@ -120,6 +120,7 @@ const Header = () => {
           <h3>RESUME</h3>
         </div> */}
       </div> : null }
+    
       
     </div>
   );

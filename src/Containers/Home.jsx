@@ -42,15 +42,21 @@ const Home = () => {
   const page2Con = useRef(null);
   const aboutRef = useRef(null);
   const craftRef = useRef(null);
+  const craftRef2 = useRef(null);
   const skillsRef = useRef(null);
+  const skillsRef2 = useRef(null);
+  const skillsRef3 = useRef(null);
   const projectRef = useRef(null);
+  const projectRef2 = useRef(null);
+  const projectRef3 = useRef(null);
+  const projectTextRef2 = useRef(null);
+  const projectTextRef3 = useRef(null);
   const projectTextRef = useRef(null);
   const ProjectConRef = useRef(null);
   const ProjectCardCon = useRef(null);
   const contactRef = useRef(null);
   const innerBoxRef = useRef([]);
   const context = useContext(DataContext);
-  const [openNav ,setOpenNav] = useState(false);
   // const ctx = useContext(DataContext);
 
   useEffect(() => {
@@ -225,6 +231,44 @@ const Home = () => {
             },
           });
 
+
+           let craftTl2 = gsap.timeline({
+          scrollTrigger: {
+            trigger: craftRef2.current,
+            scroller: "body",
+            start: "top 40%",
+            end: "top 0%",
+
+            // onEnter: () => console.log("ENTERED"),
+          },
+        });
+
+        craftTl2
+          .from(
+            ".craftingText2  ", // Start state
+            {
+              y: 100,
+              opacity: 0,
+              duration: 2,
+              ease: "power3.out",
+              stagger: 0.2, // Adds a delay between each span's animation
+            }
+          )
+          .to(".craftingText2", {
+            translateX: "-86%",
+            // delay : 2.5,
+            duration: 3,
+            scrollTrigger: {
+              trigger: craftRef2.current,
+              scroller: "body",
+              start: "top 30%",
+              end: "top -90%",
+              scrub: 1,
+              pin: ".craftingText2",
+              // onEnter: () => console.log("ENTERED"),
+            },
+          });
+
         let leftNum = -1600;
         let topNUm = -630;
         // let skillTl2 = gsap.timeline();
@@ -279,6 +323,106 @@ const Home = () => {
             },
           });
 
+
+        let leftNum2 = -830;
+        let topNUm2 = -700;
+        let skillsTl2 = gsap.timeline({
+          scrollTrigger: {
+            trigger: skillsRef2.current,
+            scroller: "body",
+            start: "top  center",
+            // markers:true
+          }
+        });
+
+        skillsTl2
+          .from("#skills2", {
+            y: 400,
+            opacity: 0,
+            duration: 1.5,
+
+            ease: "power3.out",
+          })
+          .to(".skillcard2", {
+            left: () => {
+              leftNum2 = leftNum2 + 45;
+              return leftNum2;
+            },
+            top: () => {
+              topNUm2 = topNUm2 + 28;
+              return topNUm2;
+            },
+            opacity: 1,
+            delay: 2,
+            ease: "power3.out",
+            duration: 1,
+            stagger: 1,
+            onComplete: () => {
+              console.log("Completed");
+            },
+            scrollTrigger: {
+              trigger: skillsRef2.current,
+              scroller: "body",
+              start: " top top ",
+              end: "top -630%",
+              scrub: 1,
+              // markers:true,
+              pin: true,
+            },
+          });
+
+
+
+             let leftNum3 = -380;
+        let topNUm3 = -740;
+        let skillsTl3 = gsap.timeline({
+          scrollTrigger: {
+            trigger: skillsRef3.current,
+            scroller: "body",
+            start: "top  center",
+            // markers:true
+          }
+        });
+
+        skillsTl3
+          .from("#skills3", {
+            y: 400,
+            opacity: 0,
+            duration: 1.5,
+
+            ease: "power3.out",
+          })
+          .to(".skillcard3", {
+            left: () => {
+              leftNum3 = leftNum3 + 15;
+              return leftNum3;
+            },
+            top: () => {
+              topNUm3 = topNUm3 + 32;
+              return topNUm3;
+            },
+            opacity: 1,
+            delay: 2,
+            ease: "power3.out",
+            duration: 1,
+            stagger: 1,
+            onComplete: () => {
+              console.log("Completed");
+            },
+            scrollTrigger: {
+              trigger: skillsRef3.current,
+              scroller: "body",
+              start: " top top ",
+              end: "top -630%",
+              scrub: 1,
+              // markers:true,
+              pin: true,
+            },
+          });
+
+
+
+
         gsap.to(".projectsText", {
           scale: 49,
           x: 879,
@@ -309,6 +453,74 @@ const Home = () => {
               context.setShowWhiteLogo(true);
               projectTextRef.current.style.display = "block";
               projectRef.current.style.backgroundColor = "#000";
+            },
+          },
+        });
+
+         gsap.to(".projectsText2", {
+          scale: 49,
+          x: 207,
+          ease: "power3.out",
+          onComplete: () => {
+            console.log("Projects entered");
+            context.setEnteredProjects(true);
+            // context.setShowCursor2(true);
+            context.setShowCursor(false);
+            context.setShowWhiteLogo(false);
+            projectTextRef2.current.style.display = "none";
+            projectRef2.current.style.backgroundColor = "#F1F1F1";
+          },
+          scrollTrigger: {
+            trigger: projectRef2.current,
+            scroller: "body",
+            start: "top 0%",
+            end: "top -80%",
+            scrub: 1,
+            pin: true,
+            // markers: true,
+            onEnterBack: () => {
+              console.log("Projects entered Back");
+              context.setEnteredProjects(false);
+              // context.setShowCursor2(false);
+              context.setShowCursor(true);
+              // context.setShowWhiteLogo(false);
+              context.setShowWhiteLogo(true);
+              projectTextRef2.current.style.display = "block";
+              projectRef2.current.style.backgroundColor = "#000";
+            },
+          },
+        });
+
+          gsap.to(".projectsText3", {
+          scale: 49,
+          x: 442,
+          ease: "power3.out",
+          onComplete: () => {
+            console.log("Projects entered");
+            context.setEnteredProjects(true);
+            // context.setShowCursor2(true);
+            context.setShowCursor(false);
+            context.setShowWhiteLogo(false);
+            projectTextRef3.current.style.display = "none";
+            projectRef3.current.style.backgroundColor = "#F1F1F1";
+          },
+          scrollTrigger: {
+            trigger: projectRef3.current,
+            scroller: "body",
+            start: "top 0%",
+            end: "top -80%",
+            scrub: 1,
+            pin: true,
+            // markers: true,
+            onEnterBack: () => {
+              console.log("Projects entered Back");
+              context.setEnteredProjects(false);
+              // context.setShowCursor2(false);
+              context.setShowCursor(true);
+              // context.setShowWhiteLogo(false);
+              context.setShowWhiteLogo(true);
+              projectTextRef3.current.style.display = "block";
+              projectRef3.current.style.backgroundColor = "#000";
             },
           },
         });
@@ -360,7 +572,7 @@ const Home = () => {
         ContactRefTl.to(
           "#top_heading",
           {
-            top: "-50%",
+            top: "-60%",
           },
           "abc"
         )
@@ -381,7 +593,7 @@ const Home = () => {
           .to(
             "#bottom_h1",
             {
-              bottom: "-185.5%",
+              top: "-20%",
             },
             "abc"
           )
@@ -558,7 +770,7 @@ const Home = () => {
   return (
     // <></>
     <div className="">
-      <div className="flex absolute top-[35%] -left-15 z-50 rotate-z-90 text-xl font-['Mulish','Helvetica Neue',sans-serif]   gap-2 overflow-x-hidden bg-[#ff000037]    rounded-4xl pr-4 py-1  items-center  justify-center ">
+      <div className="flex absolute top-[20%] md:top-[25%] lg:top-[35%] lg:scale-[1] md:scale-[0.9] scale-[0.7] -left-20 md:-left-17 lg:-left-15 z-50 rotate-z-90 text-xl font-['Mulish','Helvetica Neue',sans-serif]   gap-2 overflow-x-hidden bg-[#ff000037]    rounded-4xl pr-4 py-1  items-center  justify-center ">
         <MdExplore className="text-4xl text-red-200 bg-[#A60002] p-[6px] rounded-full" />
         <h1 className=" font-bold text-red-300">Explore More</h1>
       </div>
@@ -573,7 +785,7 @@ const Home = () => {
             {/* <div className='video w-[700px] z-[2] h-[700px] rounded-full -top-[55px]  left-[27%] bg-[#0101015e]  absolute'></div> */}
             <video
               ref={videoRef}
-              className="   z-[10] mask w-[100%] h-screen absolute top-0 "
+              className=" lg:scale-[1] scale-[2] md:scale-[1.7]  z-[10] mask  w-[100%] h-screen absolute top-0 "
               autoPlay
               loop
               muted
@@ -584,14 +796,14 @@ const Home = () => {
             ref={nameRef}
             className={`text w-[100%]  gap-10  flex items-center justify-center   z-[4] font-['Mulish','Helvetica Neue',sans-serif]  hero font-[800] left-[50%] whitespace-nowrap top-[50%] transform -translate-x-1/2 -translate-y-[80%] absolute `}
           >
-            <div className="flex textCon1  overflow-hidden text-[16vw] leading-[15rem] gap-1 items-center justify-center font-['stretch']">
+            <div className="flex textCon1  overflow-hidden text-[20vw] lg:text-[16vw] leading-[15rem] gap-1 items-center justify-center font-['stretch']">
               <span>S</span>
               <span>U</span>
               <span>R</span>
               <span>Y</span>
               <span>A</span>
             </div>
-            <div className="flex overflow-hidden textCon2 text-[16vw] leading-[15rem]  gap-1  items-center justify-center font-['stretch']">
+            <div className="flex overflow-hidden textCon2 text-[20vw] lg:text-[16vw] leading-[15rem]  gap-1  items-center justify-center font-['stretch']">
               <span>A</span>
               <span>N</span>
               <span>N</span>
@@ -605,7 +817,7 @@ const Home = () => {
           </h1>
           <div
             ref={textRef}
-            className={`text absolute  text-3xl  z-[4] left-[50%] whitespace-nowrap top-[55%] transform -translate-x-1/2 translate-y-[50%]`}
+            className={`text absolute md:text-2xl lg:text-3xl  z-[4] left-[50%] whitespace-nowrap top-[50%] lg:top-[55%] transform -translate-x-1/2 translate-y-[50%]`}
           >
             <div className="overflow-hidden">
               <h3 className="flex tag items-center justify-start gap-2  text-2xl text-[#b8b8b8]">
@@ -625,7 +837,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="rounded-full svg   absolute   -bottom-[3%] -right-[1.5%]">
+        <div className="rounded-full svg  lg:scale-[1] scale-[0.7] absolute  -bottom-[8%] -right-[8%] lg:-bottom-[3%] lg:-right-[1.5%]">
           <div className="w-[10px] h-[10px] rounded-full bg-white absolute top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%]"></div>
           <svg width={252} height={252}>
             <path
@@ -650,26 +862,26 @@ const Home = () => {
 
         {/* Nav PopUp */}
         <div id="navPop" className={`w-[100%] navPop   backdrop-blur-md flex items-center justify-start h-[100vh] fixed left-0 top-0  z-[600] bg-[#ff000076]`}>
-          <div id="links" className="w-[100px] absolute left-5  top-0  active:scale-[0.8] transition-all">
+          <div id="links" className="w-[100px] md:scale-[1] scale-[0.7] absolute left-2 -top-4  md:top-0  active:scale-[0.8] transition-all">
                  <img className="w-full rounded-2xl inline-block" src={logo} alt="" />
                </div>
           {/* <MdClear onClick={() => 
            {console.log("clock")}
           } className="absolute p-2 top-30 font-bold text-black w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center right-10" /> */}
-           <div id="links" className="flex  absolute right-10 top-5 items-center justify-center gap-3">
+           <div id="links" className="flex  absolute right-10 top-[92%] md:top-5 items-center justify-center gap-3">
             <a
 
             className="w-[40px]"
               target="_blank"
               href="https://github.com/Surya-Annadurai-10/Surya-Annadurai-10"
             >
-              <img className="w-[50px] hover:scale-[2] transition-all scale-[1.8]" src={github} alt="" />
+              <img className="w-[50px]  scale-[1.5] hover:scale-[2] transition-all md:scale-[1.8]" src={github} alt="" />
             </a>
             <a target="_blank" href="https://linkedin.com/in/surya-annadurai">
-              <img className="w-[35px] hover:scale-[1.1]  mx-3" src={linkedin} alt="" />
+              <img className="w-[35px] hover:scale-[1.1]  md:scale-[1] scale-[0.8] mx-3" src={linkedin} alt="" />
             </a>
             <a href="" target="_blank">
-              <img className="w-[37px] hover:scale-[1.1] transition-all" src={instagram} alt="" />
+              <img className="w-[37px] hover:scale-[1.1] md:scale-[1] scale-[0.8] transition-all" src={instagram} alt="" />
             </a>
 
             <a target="_blank" href="https://leetcode.com/u/Surya_Annadurai/">
@@ -679,33 +891,33 @@ const Home = () => {
               target="_blank"
               href="https://www.geeksforgeeks.org/user/suryaannadu33zc/"
             >
-              <img className="w-[52px] hover:scale-[1.1] transition-all" src={gfg} alt="" />
+              <img className="w-[52px] hover:scale-[1.1] md:scale-[1] scale-[0.8] transition-all" src={gfg} alt="" />
             </a>
           </div>
-          <div id="navCon" className="ml-15 navcon mt-10 w-[100%] overflow-hidden">
+          <div id="navCon" className="md:ml-15 ml-5  navcon mt-3  md:mt-10 w-[100%] overflow-hidden">
             {
               navData.map((ele,index)=>{
 
                 if(ele.name=="Resume"){
- return <a key={`${ele.name}_${index}`}  href={resume} download={"Surya Annadurai.pdf"} className="relative">
-              <div className="navHead relative  w-[75%] h-fit overflow-hidden">
+                     return <a key={`${ele.name}_${index}`}  href={resume} download={"Surya Annadurai.pdf"} className="relative">
+              <div className="navHead relative w-[100%]  md:w-[75%] h-fit overflow-hidden">
                 <div
                  ref={(el)=> innerBoxRef.current[index]=el}
                   className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-70 bg-black"
                 ></div>
-                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
+                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[13vw] ] md:text-[7vw]">
                 {ele.name}
                 </h1>
               </div>
             </a>
                 }else{
-return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
-              <div className="navHead relative  w-[75%] h-fit overflow-hidden">
+                 return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
+              <div className="navHead relative  w-[100%] md:w-[75%] h-fit overflow-hidden">
                 <div
                  ref={(el)=> innerBoxRef.current[index]=el}
                   className="w-[0%] h-[15%]  stripe -left-25 absolute top-1/2 z-100 -skew-x-70 bg-black"
                 ></div>
-                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[7vw]">
+                <h1 className="text-white z-[700]  font-[milker] transition-all duration-200 text-[13vw] md:text-[7vw]">
                 {ele.name}
                 </h1>
               </div>
@@ -753,23 +965,19 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
             </a> */}
           </div>
         </div>
-        <div id="ham" onClick={() => setOpenNav(!openNav)} className={`active:scale-[0.8] transition-all cursor-pointer z-[800]  fixed  right-10   top-1/2 bg-red w-[50px] h-[50px] `}>
+        <div id="ham" onClick={() => context.setOpenNav(!openNav)} className={`active:scale-[0.8] transition-all cursor-pointer z-[800]  fixed  right-5 md:scale-[1] scale-[0.7]  top-[3%] md:top-1/2 bg-red w-[50px] h-[50px] `}>
               
               <div id="top" className={`w-[50px] top  -skew-x-70 h-[4px] ${context.showWhiteLogo ? "bg-[#f1f1f1]" : "bg-black"}`}></div>
               <div  id="center" className={`w-[50px] center  h-[5px] my-2 ${context.showWhiteLogo ? "bg-[#f1f1f1]" : "bg-black"}`}></div>
               <div  id="bottom" className={`w-[50px] bottom -skew-x-70 h-[4px] ${context.showWhiteLogo ? "bg-[#f1f1f1]" : "bg-black"}`}></div>
-              {/* <div className="w-[50px] -skew-x-60 my-2  h-[3px] bg-white"></div>
-              <div className="w-[50px] -skew-x-60 h-[3px] bg-white"></div> */}
-              <div></div>
-              <div></div>
         </div>
         <div>
           <div
             ref={page2Con}
-            className="w-full  h-[150vh]   overflow-x-hidden  "
+            className="w-full h-[160vh] md:h-[125vh]  lg:h-[150vh]   overflow-x-hidden  "
           >
             <div className="backdrop-blur-md vanakkam">
-              <h1 className="hellow ml-[3rem] mt-[5vh] flex items-center justify-start text-[19rem] font-['race'] whitespace-nowrap">
+              <h1 className="hellow ml-[3rem] mt-[5vh] flex items-center justify-start text-[16vh] lg:text-[19rem] font-['race'] whitespace-nowrap">
                 <span> &#x2022; &nbsp;Hello &nbsp; </span>
                 <span> &#x2022; &nbsp; Vanakkam &nbsp; </span>
                 <span> &#x2022; &nbsp; Namaste &nbsp; </span>
@@ -795,7 +1003,7 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
               }}
               className="w-[100%] mt-[12rem] m-auto "
             >
-              <h2 className="char p-[5rem] flex flex-wrap gap-2 text-4xl font-['Mulish','Helvetica Neue',sans-serif]">
+              <h2 className="char p-[2rem] lg:p-[5rem] flex flex-wrap gap-2 text-2xl md:text-3xl lg:text-4xl font-['Mulish','Helvetica Neue',sans-serif]">
                 {about.split(" ").map((char, i) => splitString(char, i))}
               </h2>
             </div>
@@ -807,7 +1015,7 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
               context.setShowCursor(true);
               context.setEnteredProjects(false);
             }}
-            className="w-full h-[195vh] relative"
+            className="w-full hidden md:block h-[195vh] relative"
           >
             <div>
               <img
@@ -820,18 +1028,50 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
 
             <div className="w-full  h-full flex">
               <h1 className=" z-[20] leading-[22rem] overflow-hidden absolute flex   gap-[10rem]  ml-[4.3rem] craftingText  font-['milker']">
-                <span className="child  text-[18rem] ">Crafting</span>
-                <span className="child text-[18rem] ">the</span>
-                <span className="child text-[18rem] ">web</span>
-                <span className="child text-[18rem] ">with</span>
-                <span className="child text-[18rem] ">these</span>
-                <span className="child text-[18rem] ">Skills</span>
+                <span className="child  text-[8rem] lg:text-[18rem] ">Crafting</span>
+                <span className="child text-[8rem] lg:text-[18rem] ">the</span>
+                <span className="child text-[8rem] lg:text-[18rem] ">web</span>
+                <span className="child text-[8rem] lg:text-[18rem] ">with</span>
+                <span className="child text-[8rem] lg:text-[18rem] ">these</span>
+                <span className="child text-[8rem] lg:text-[18rem] ">Skills</span>
               </h1>
             </div>
           </div>
+
+          <div
+            ref={craftRef2}
+            onMouseEnter={() => {
+              // context.setShowCursor2(false);
+              context.setShowCursor(true);
+              context.setEnteredProjects(false);
+            }}
+            className="w-full block md:hidden h-[195vh] relative"
+          >
+            <div>
+              <img
+                className="absolute top-0 right-0 w-full h-full rotate-z-180 z-[0] shadow-[0px_0px_50px_50px_black]"
+                src={bgred}
+                alt=""
+              />
+              <div className="absolute top-0 right-0 w-full h-full  bg-linear-to-t from-black via-[#0000007a] z-[1] to-[#000000c8] to-95%"></div>
+            </div>
+
+            <div className="w-full  h-full flex">
+              <h1 className=" z-[20] leading-[22rem] overflow-hidden absolute flex   gap-[10rem] ml-[1rem] md:ml-[4.3rem] craftingText2  font-['milker']">
+                <span className="child text-[5rem] md:text-[8rem] lg:text-[18rem] ">Crafting</span>
+                <span className="child text-[5rem] md:text-[8rem] lg:text-[18rem] ">the</span>
+                <span className="child text-[5rem] md:text-[8rem] lg:text-[18rem] ">web</span>
+                <span className="child text-[5rem] md:text-[8rem] lg:text-[18rem] ">with</span>
+                <span className="child text-[5rem] md:text-[8rem] lg:text-[18rem] ">these</span>
+                <span className="child text-[5rem] md:text-[8rem] lg:text-[18rem] ">Skills</span>
+              </h1>
+            </div>
+          </div>
+
+          {/* skills 1 ------------------- */}
           <div
             ref={skillsRef}
-            className="w-full flex rounded-3xl overflow-hidden relative justify-center items-center  h-screen bg-[black]"
+            className="w-full hidden lg:flex rounded-3xl overflow-hidden relative justify-center items-center  h-screen bg-[black]"
           >
             <h1
               id="skills"
@@ -841,7 +1081,7 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
             </h1>
 
             <div
-              className=" flex skillcardCon items-center  justify-start gap-[5rem]
+              className="flex skillcardCon items-center  justify-start gap-[5rem]
               absolute  right-[0%] bottom-[0%]"
             >
               {skills.map((ele, i) => {
@@ -872,7 +1112,109 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
                 );
               })}
             </div>
+             
           </div>
+{/* skill 1 end------------------------- */}
+          {/* skills2--------- */}
+
+          <div
+            ref={skillsRef2}
+            className="w-full hidden md:flex lg:hidden rounded-3xl overflow-hidden relative justify-center items-center  h-screen bg-[black]"
+          >
+            <h1
+              id="skills2"
+              className="text-[15vw] font-bold tracking-tight skills2 "
+            >
+              SKILLS
+            </h1>
+
+            <div
+              className="flex lg:hidden skillcardCon2 items-center  justify-start gap-[5rem]
+              absolute  right-[0%] bottom-[0%]"
+            >
+              {skills.map((ele, i) => {
+                let num;
+                if (i < 9) {
+                  num = `0${i + 1}`;
+                } else {
+                  num = i + 1;
+                }
+                // if(i == 0){
+
+                // }
+                return (
+                  <div
+                    key={`${ele.img}_${i}`}
+                    className="opacity-0 absolute scale-[0.7] lg:scale-[1] backdrop-blur-md  skillcard2  z-[5]  border border-[#5c5c5c] text-white  flex items-center justify-center flex-col gap-5 w-[30vw] h-[38vh] lg:w-[20vw] lg:h-[50vh] rounded "
+                  >
+                    <h1 className="font-['milker']  absolute left-0 -z-[10] bottom-[85%] num text-[8vw] lg:text-[5vw]">
+                      {num}
+                    </h1>
+                    <div className=" bg-[#ffffff53] w-[70%] h-[60%] rounded-full grid place-items-center">
+                      <img className="w-[70%]" src={ele.img} alt="" />
+                    </div>
+                    <div>
+                      <h1 className="text-3xl font-bold">{ele.heading}</h1>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+             
+          </div>
+
+{/* ---------------------skills2end------------------------------ */}
+
+   {/* skills3--------- */}
+
+          <div
+            ref={skillsRef3}
+            className="w-full flex md:hidden rounded-3xl overflow-hidden relative justify-center items-center  h-screen bg-[black]"
+          >
+            <h1
+              id="skills3"
+              className="md:text-[15vw] text-[18vw] font-bold tracking-tight skills3 "
+            >
+              SKILLS
+            </h1>
+
+            <div
+              className="flex lg:hidden skillcardCon3 items-center  justify-start gap-[5rem]
+              absolute  right-[0%] bottom-[0%]"
+            >
+              {skills.map((ele, i) => {
+                let num;
+                if (i < 9) {
+                  num = `0${i + 1}`;
+                } else {
+                  num = i + 1;
+                }
+                // if(i == 0){
+
+                // }
+                return (
+                  <div
+                    key={`${ele.img}_${i}`}
+                    className="opacity-0 absolute scale-[0.6] lg:scale-[1] backdrop-blur-md  skillcard3  z-[5]  border border-[#5c5c5c] text-white  flex items-center justify-center flex-col gap-5 w-[50vw] h-[29vh] md:w-[30vw] md:h-[38vh] lg:w-[20vw] lg:h-[50vh] rounded "
+                  >
+                    <h1 className="font-['milker']  absolute left-0 -z-[10] bottom-[90%] num text-[10vw] md:text-[8vw] lg:text-[5vw]">
+                      {num}
+                    </h1>
+                    <div className=" bg-[#ffffff53] w-[70%] h-[60%] rounded-full grid place-items-center">
+                      <img className="w-[70%]" src={ele.img} alt="" />
+                    </div>
+                    <div>
+                      <h1 className="text-3xl font-bold">{ele.heading}</h1>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+             
+          </div>
+
+{/* ---------------------skills3end------------------------------ */}
+
           <div id="skillsCon" className="w-full h-[1vh] bg-black"></div>
           <div
             ref={projectRef}
@@ -887,9 +1229,9 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
             //   context.setShowCursor(true);
             //   context.setEnteredProjects(false);
             // }}
-            className="bg-black"
+            className="bg-black hidden lg:block"
           >
-            <div className="w-full grid place-items-center h-[91vh] text-center font-[700]">
+            <div className="w-full hidden lg:grid place-items-center h-[91vh] text-center font-[700]">
               <h1
                 id="projectsText"
                 ref={projectTextRef}
@@ -899,6 +1241,63 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
               </h1>
             </div>
           </div>
+
+{/* projectref2------------------ */}
+          <div
+            ref={projectRef2}
+            onMouseEnter={() => {
+              // context.setShowCursor2(true);
+              context.setShowCursor(false);
+              context.setEnteredProjects(true);
+              // handleProjectConLeave
+            }}
+            // onMouseLeave={() => {
+            //   context.setShowCursor2(false);
+            //   context.setShowCursor(true);
+            //   context.setEnteredProjects(false);
+            // }}
+            className="bg-black block md:hidden "
+          >
+            <div className="w-full grid md:hidden  place-items-center h-[91vh] text-center font-[700]">
+              <h1
+                id="projectsText2"
+                ref={projectTextRef2}
+                className="projectsText2 text-[#f1f1f1] text-[15vw] uppercase "
+              >
+                Projects
+              </h1>
+            </div>
+          </div>
+
+          {/* projectref3------------- */}
+             <div
+            ref={projectRef3}
+            onMouseEnter={() => {
+              // context.setShowCursor2(true);
+              context.setShowCursor(false);
+              context.setEnteredProjects(true);
+              // handleProjectConLeave
+            }}
+            // onMouseLeave={() => {
+            //   context.setShowCursor2(false);
+            //   context.setShowCursor(true);
+            //   context.setEnteredProjects(false);
+            // }}
+            className="bg-black  hidden md:block lg:hidden "
+          >
+            <div className="w-full hidden md:grid lg:hidden  place-items-center h-[91vh] text-center font-[700]">
+              <h1
+                id="projectsText3"
+                ref={projectTextRef3}
+                className="projectsText3 text-[#f1f1f1] text-[15vw] uppercase "
+              >
+                Projects
+              </h1>
+            </div>
+          </div>
+
+
+
           <div
             ref={ProjectConRef}
             onMouseEnter={() => {
@@ -911,7 +1310,7 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
               context.setShowCursor(true);
               context.setEnteredProjects(false);
             }}
-            className="w-full text-black flex items-center justify-center border-none relative border-t-emerald-800  h-screen bg-[#f1f1f1]"
+            className="w-full text-black flex items-center justify-center border-none relative  h-screen bg-[#f1f1f1]"
           >
             {/* <div className="relative  flex items-center justify-center w-[10%] h-full">
               <h1 className={`text-[4rem] underline ${context.ShowWhiteLogo ? 'text-[#f1f1f1]' : 'text-black'} whitespace-nowrap mt-[5rem] -rotate-z-90  font-['race']`}>
@@ -921,9 +1320,9 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
 
             <div
               ref={ProjectCardCon}
-              className="w-full  relative pt-[5rem]  projectCard grid place-items-center h-screen "
+              className="w-full  relative pt-[10rem] lg:pt-[5rem]  projectCard flex items-center  justify-center h-screen "
             >
-              <div className="bg-amber-600">
+              <div className="  ">
                 {projectsData.map((ele, i) => {
                   return (
                     <a
@@ -934,7 +1333,7 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
                       <div
                         onMouseEnter={handleProjectConEnter}
                         onMouseLeave={handleProjectConLeave}
-                        className="min-w-[80%] projectCard absolute z-10 top-[100%] left-[10%] rounded-2xl min-h-[78%] "
+                        className="min-w-[95%] lg:min-w-[80%] left-2 projectCard absolute z-10 top-[100%] md:left-6 lg:left-[10%] rounded-2xl min-h-[40%] md:min-h-[65%] lg:min-h-[78%] "
                       >
                         <img
                           className="w-full h-full rounded-2xl absolute z-1 "
@@ -942,10 +1341,10 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
                           alt=""
                         />
                         <div className="absolute rounded-2xl w-full h-full left-0 top-0 right-0 bg-linear-to-t from-black via-30% to-transparent z-2"></div>
-                        <div className="flex items-center justify-between w-full h-[30%] px-10 absolute bottom-0 z-2">
+                        <div className="flex items-center md:flex-row flex-col justify-center gap-1 md:justify-between w-full h-[30%] px-10 absolute bottom-0 z-2">
                           <h1
                             className={
-                              "text-white projectname font-bold font-['Mulish','Helvetica Neue',sans-serif]  text-[5rem]"
+                              "text-white projectname font-bold font-['Mulish','Helvetica Neue',sans-serif] text-[2rem] md:text-[3rem] lg:text-[5rem]"
                             }
                           >
                             {ele.name}
@@ -955,7 +1354,7 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
                               return (
                                 <img
                                   key={`${ele}_${i}`}
-                                  className="w-[50px]"
+                                  className="w-[20px] md:w-[40px] lg:w-[50px]"
                                   src={ele}
                                   alt={`${i}`}
                                 />
@@ -983,7 +1382,7 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
             >
               <h1
                 id="top_h1"
-                className="text-[14vw] absolute left-[50%] top-[96%]  -translate-x-[50%] -translate-y-[50%]  font-[milker]  text-black"
+                className="text-[14vw] absolute left-[50%] lg:top-[96%] top-[98%] -translate-x-[50%] -translate-y-[50%]  font-[milker]  text-black"
               >
                 DAZZLED?
               </h1>
@@ -994,8 +1393,8 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
                 className="flex items-center flex-col gap-10 justify-center text-white"
               >
                 <div className="text-[4vw] flex items-center justify-center gap-3 font-[milker]">
-                  <h1>DROP A MAIL , LETS HAVE A COFFEE</h1>
-                  <img className="w-[100px]" src={coffee} alt="" />
+                  <h1 className="text-center">DROP A MAIL , LETS HAVE A COFFEE</h1>
+                  <img className="lg:w-[100px] w-[60px]" src={coffee} alt="" />
                 </div>
 
                 <a href={`mailto:hellosuryaannadurai@gmail.com`}>
@@ -1014,7 +1413,7 @@ return  <a key={`${ele.name}_${index}`} href={ele.link} className="relative">
             >
               <h1
                 id="bottom_h1"
-                className="text-[14vw]  absolute left-[50%] top-[50%] -bottom-[146.5%] -translate-x-[50%] -translate-y-[50%]  font-[milker]  text-black"
+                className="text-[14vw]  absolute left-[50%] lg:-top-[4%] -top-[2%]  -translate-x-[50%] -translate-y-[50%]  font-[milker]  text-black"
               >
                 DAZZLED?
               </h1>

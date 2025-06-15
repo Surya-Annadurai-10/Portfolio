@@ -8,14 +8,14 @@ import gfg from "../assets/gfg.png";
 
 const Footer = () => {
   return (
-    <div className="w-full flex items-center text-black flex-col justify-evenly h-[50vh] bg-[#FFFFFF]">
-      <div className="w-full flex items-center text-black justify-evenly h-[50vh] bg-[##FFFFFF]">
+    <div className="w-full flex items-center text-black flex-col justify-between md:justify-evenly  h-[60vh] md:h-[50vh] bg-[#FFFFFF]">
+      <div className="w-full flex items-center text-black md:flex-row flex-col justify-evenly h-[50vh] bg-[##FFFFFF]">
         <div className="flex items-center justify-center flex-col ">
           <h2 className="font-semibold">No © copyright issues.</h2>
-          <p>Feel free to copy. If you need any help, ping me!</p>
+          <p className="text-center">Feel free to copy. If you need any help, ping me!</p>
         </div>
         <div className="flex items-center justify-center gap-2 flex-col ">
-          <h2 className="sacro text-6xl text-black">Surya Annadurai</h2>
+          <h2 className="sacro text-5xl text-center lg:text-6xl text-black">Surya Annadurai</h2>
           <p>
             Made with<span className="text-2xl"> ♥️ </span>in India
           </p>
@@ -50,8 +50,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div>
-        <img src={foot} alt="" />
+      <div >
+        <img className="h-[10vh] md:h-[18vh]" src={foot} alt="" />
       </div>
     </div>
   );
