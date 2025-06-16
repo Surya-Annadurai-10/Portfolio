@@ -45,7 +45,7 @@ function App() {
   const [showCursor2, setShowCursor2] = useState(false);
   const [enteredProjects , setEnteredProjects] = useState(false);
   const [showWhiteLogo , setShowWhiteLogo] = useState(true);
-  const [showHero, setShowHero] = useState(true);
+  const [showHero, setShowHero] = useState(false);
   // const [blackCursor, setBlackCursor] = useState(true);
   const [openNav ,setOpenNav] = useState(false);
 

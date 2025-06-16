@@ -1336,7 +1336,7 @@ const Home = () => {
                         className="min-w-[95%] lg:min-w-[80%] left-2 projectCard absolute z-10 top-[100%] md:left-6 lg:left-[10%] rounded-2xl min-h-[40%] md:min-h-[65%] lg:min-h-[78%] "
                       >
                         <img
-                          className="w-full h-full rounded-2xl absolute z-1 "
+                          className="w-full h-full  rounded-2xl absolute z-1 "
                           src={ele.img}
                           alt=""
                         />
@@ -1421,7 +1421,7 @@ const Home = () => {
           </div>
 
           <div className="w-full font-[milker] gap-3 h-[50vh] flex items-center justify-center flex-col  bg-[black]">
-            <div className="flex thanks font-bold text-4xl items-center justify-center text-white gap-2 ">
+            <div className="flex thanks font-bold text-3xl md:text-4xl items-center justify-center text-white gap-2 ">
               <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
               <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
               <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
@@ -1445,7 +1445,7 @@ const Home = () => {
               <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
               <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
             </div>
-            <div className="flex thanks2 font-bold text-4xl items-center justify-center text-white gap-2 ">
+            <div className="flex thanks2 font-bold  text-3xl md:text-4xl items-center justify-center text-white gap-2 ">
               <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
               <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
               <h1 className="whitespace-nowrap">• Thanks for Visiting • 🙏 </h1>
