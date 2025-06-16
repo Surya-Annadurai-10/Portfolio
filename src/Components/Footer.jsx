@@ -112,7 +112,7 @@ const Footer = () => {
         </div>
       </div>
       <div >
-        <img className="h-[10vh] md:h-[18vh]" src={foot} alt="" />
+        <img className="h-[10vh] w-[100%] lg:h-[22vh] md:h-[18vh]" src={foot} alt="" />
       </div>
     </div>
   );
