@@ -217,7 +217,7 @@ const Home = () => {
             }
           )
           .to(".craftingText", {
-            translateX: "-78%",
+            translateX: "-80%",
             // delay : 2.5,
             duration: 3,
             scrollTrigger: {
